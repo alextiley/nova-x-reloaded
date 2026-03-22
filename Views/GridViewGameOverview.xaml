@@ -641,7 +641,8 @@
                                                             </LinearGradientBrush>
                                                             <LinearGradientBrush x:Key="GoldBrush" StartPoint="0,0" EndPoint="1,0">
                                                                 <GradientStop Color="#D4AF37" Offset="0" />
-                                                                <GradientStop Color="#B8860B" Offset="1" />
+                                                                <GradientStop Color="#B8860B" Offset="0.5" />
+                                                                <GradientStop Color="#a99000" Offset="1" />
                                                             </LinearGradientBrush>
                                                             <LinearGradientBrush x:Key="SilverBrush" StartPoint="0,0" EndPoint="1,0">
                                                                 <GradientStop Color="#C0C0C0" Offset="0" />
@@ -978,7 +979,7 @@
                                                                      Maximum="{Binding Path=Total, FallbackValue=0}"
                                                                      Value="{Binding Path=Unlocked, FallbackValue=0}"
                                                                      HorizontalAlignment="Stretch"
-                                                                     Background="#37393e" Height="28" Style="{StaticResource AchievementProgressBarStyle}"/>
+                                                                     Background="#37393e" Height="28" Style="{StaticResource AchievementProgressBarStyle}" VerticalAlignment="Center"/>
                                                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                                                                    Foreground="{DynamicResource TextBrush}"
                                                                    FontWeight="SemiBold" FontSize="13" IsHitTestVisible="False">
@@ -987,10 +988,10 @@
                                                             <TextBlock.Effect>
                                                               <DropShadowEffect
                                                                 ShadowDepth="1"
-                                                                Direction="45"
+                                                                Direction="180"
                                                                 Color="Black"
                                                                 Opacity="0.5"
-                                                              BlurRadius="2"/>
+                                                              BlurRadius="3"/>
                                                             </TextBlock.Effect>
                                                         </TextBlock>
                                                     </Grid>
