@@ -270,8 +270,8 @@
                                                                 Visibility="{PluginSettings Plugin=HowLongToBeat, Path=EnableIntegrationButton, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                                 <ContentControl x:Name="CheckDlc_PluginButton" Height="54" VerticalAlignment="Center" Margin="0,15,10,0"
                                                                 Visibility="{PluginSettings Plugin=CheckDlc, Path=EnableIntegrationButton, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                                                <ContentControl x:Name="PlayniteAchievements_PluginButton" Height="54" VerticalAlignment="Center" Margin="0,15,10,0"
-                                                                Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                <ContentControl x:Name="SuccessStory_PluginButton" Height="54" VerticalAlignment="Center" Margin="0,15,10,0"
+                                                                Visibility="{PluginSettings Plugin=SuccessStory, Path=HasData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                                 <ContentControl x:Name="GameActivity_PluginButton" Height="54" VerticalAlignment="Center" Margin="0,15,10,0"
                                                                 Visibility="{PluginSettings Plugin=GameActivity, Path=HasData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                                 <ContentControl x:Name="SystemChecker_PluginButton" Height="54" VerticalAlignment="Center" Margin="0,15,10,0"
@@ -472,7 +472,7 @@
                                                         <Style TargetType="{x:Type DockPanel}">
                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                             <Style.Triggers>
-                                                                <DataTrigger Binding="{PluginSettings Plugin=PlayniteAchievements, Path=HasData, FallbackValue=False}" Value="True">
+                                                                <DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData, FallbackValue=False}" Value="True">
                                                                     <Setter Property="Visibility" Value="Visible" />
                                                                 </DataTrigger>
                                                             </Style.Triggers>
@@ -483,15 +483,15 @@
                                                     </Viewbox>
 
                                                     <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
-                                                        <Label Content="{DynamicResource LOCPlayniteAchievementsAchievements}" Style="{DynamicResource LabelHeaderStyle}" />
+                                                        <Label Content="{DynamicResource LOCSuccessStoryAchievements}" Style="{DynamicResource LabelHeaderStyle}" />
                                                         <DockPanel>
                                                             <DockPanel MinWidth="40">
-                                                                <TextBlock Text="{PluginSettings Plugin=PlayniteAchievements, Path=Unlocked, FallbackValue='-'}"/>
+                                                                <TextBlock Text="{PluginSettings Plugin=SuccessStory, Path=Unlocked, FallbackValue='-'}"/>
                                                                 <TextBlock Text="/"/>
-                                                                <TextBlock Text="{PluginSettings Plugin=PlayniteAchievements, Path=Total, FallbackValue='-'}"/>
+                                                                <TextBlock Text="{PluginSettings Plugin=SuccessStory, Path=Total, FallbackValue='-'}"/>
                                                             </DockPanel>
                                                             <ProgressBar x:Name="progressBar" FontSize="10" Margin="5,0,0,0"
-                                                            Maximum="{PluginSettings Plugin=PlayniteAchievements, Path=Total, FallbackValue=0}" Value="{PluginSettings Plugin=PlayniteAchievements, Path=Unlocked, FallbackValue=0}" HorizontalAlignment="Left"
+                                                            Maximum="{PluginSettings Plugin=SuccessStory, Path=Total, FallbackValue=0}" Value="{PluginSettings Plugin=SuccessStory, Path=Unlocked, FallbackValue=0}" HorizontalAlignment="Left"
                                                             Background="#37393e" Foreground="{DynamicResource DetailsViewPanelIconForegroundBrush}" Width="60" Height="10" Style="{DynamicResource RoundedProgressBar}">
                                                                 <ProgressBar.Resources>
                                                                     <Style x:Key="RoundedProgressBar" TargetType="ProgressBar">
@@ -874,16 +874,16 @@
                                                     </Border>
 
                                                     <Border Style="{DynamicResource DetailsPanelRoundedBorder}"
-                                                            Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                            Visibility="{PluginSettings Plugin=SuccessStory, Path=HasData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                         <StackPanel Margin="0,15,0,0">
                                                             <Label Style="{DynamicResource PanelLabel}"
-                                                                   Content="{DynamicResource LOCPlayniteAchievementsAchievements}" />
-                                                            <ContentControl x:Name="PlayniteAchievements_PluginProgressBar" />
-                                                            <ContentControl x:Name="PlayniteAchievements_PluginCompactUnlocked" Margin="0,10,20,0" />
-                                                            <ContentControl x:Name="PlayniteAchievements_PluginCompactLocked" Margin="0,10,20,0" />
-                                                            <ContentControl x:Name="PlayniteAchievements_PluginUserStats" Margin="0,10,20,0" />
-                                                            <ContentControl x:Name="PlayniteAchievements_PluginList" Margin="0,10,20,0" MinHeight="550" />
-                                                            <ContentControl x:Name="PlayniteAchievements_PluginChart" Margin="0,10,20,0" />
+                                                                   Content="{DynamicResource LOCSuccessStoryAchievements}" />
+                                                            <ContentControl x:Name="SuccessStory_PluginProgressBar" />
+                                                            <ContentControl x:Name="SuccessStory_PluginCompactUnlocked" Margin="0,10,20,0" />
+                                                            <ContentControl x:Name="SuccessStory_PluginCompactLocked" Margin="0,10,20,0" />
+                                                            <ContentControl x:Name="SuccessStory_PluginUserStats" Margin="0,10,20,0" />
+                                                            <ContentControl x:Name="SuccessStory_PluginList" Margin="0,10,20,0" MinHeight="550" />
+                                                            <ContentControl x:Name="SuccessStory_PluginChart" Margin="0,10,20,0" />
                                                         </StackPanel>
                                                     </Border>
 

@@ -1,0 +1,4 @@
+Constants.xaml
+thememodifier.yaml
+Views\DetailsViewGameOverview.xaml
+Views\GridViewGameOverview.xaml

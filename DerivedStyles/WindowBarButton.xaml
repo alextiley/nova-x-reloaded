@@ -12,7 +12,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />    
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -46,7 +46,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style x:Key="WindowBarButtonMainWindowMinimize" TargetType="Button">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="BorderThickness" Value="0" />
@@ -106,7 +106,7 @@
                                Foreground="{TemplateBinding Foreground}"
                                FontSize="11"
                                Padding="{TemplateBinding Padding}"
-                               Text="{TemplateBinding Content}" 
+                               Text="{TemplateBinding Content}"
                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Border>
@@ -142,7 +142,7 @@
                                Foreground="{TemplateBinding Foreground}"
                                FontSize="11"
                                Padding="{TemplateBinding Padding}"
-                               Text="{TemplateBinding Content}" 
+                               Text="{TemplateBinding Content}"
                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Border>
