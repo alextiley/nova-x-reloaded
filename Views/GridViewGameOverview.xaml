@@ -640,9 +640,9 @@
                                                                 <GradientStop Color="#4B0082" Offset="1" />
                                                             </LinearGradientBrush>
                                                             <LinearGradientBrush x:Key="GoldBrush" StartPoint="0,0" EndPoint="1,0">
-                                                                <GradientStop Color="#D4AF37" Offset="0" />
-                                                                <GradientStop Color="#B8860B" Offset="0.5" />
-                                                                <GradientStop Color="#a99000" Offset="1" />
+                                                                <GradientStop Color="#B8860B" Offset="0" />
+                                                                <GradientStop Color="#AB8407" Offset="0.5" />
+                                                                <GradientStop Color="#DCB306" Offset="1" />
                                                             </LinearGradientBrush>
                                                             <LinearGradientBrush x:Key="SilverBrush" StartPoint="0,0" EndPoint="1,0">
                                                                 <GradientStop Color="#C0C0C0" Offset="0" />
