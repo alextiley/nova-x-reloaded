@@ -1055,9 +1055,21 @@
                                             </Expander.Header>
                                             <StackPanel Margin="0,0,0,-20" ClipToBounds="True">
                                               <Separator Background="{DynamicResource GridViewSeparatorBrush}" Margin="0,0,0,0"/>
-                                              <Viewbox Height="295" Stretch="Uniform" ClipToBounds="True" Margin="0,-10,0,10">
-                                                  <ContentControl x:Name="ScreenshotsVisualizer_PluginSinglePicture" Margin="0,0,20,0" Height="543" Cursor="Hand" ClipToBounds="True" />
-                                              </Viewbox>
+                                              <Border CornerRadius="16" Background="Transparent" Margin="0,-10,0,10" ClipToBounds="True">
+                                                  <Viewbox Height="295" Stretch="Uniform" ClipToBounds="True">
+                                                      <Viewbox.OpacityMask>
+                                                          <VisualBrush Stretch="Fill" ViewboxUnits="RelativeToBoundingBox">
+                                                              <VisualBrush.Visual>
+                                                                  <Rectangle Width="1" Height="1" RadiusX="0.03" RadiusY="0.03" Fill="White" />
+                                                              </VisualBrush.Visual>
+                                                          </VisualBrush>
+                                                      </Viewbox.OpacityMask>
+                                                      <ContentControl x:Name="ScreenshotsVisualizer_PluginSinglePicture"
+                                                                      Margin="0,0,20,0"
+                                                                      Height="543"
+                                                                      Cursor="Hand" />
+                                                  </Viewbox>
+                                              </Border>
                                             </StackPanel>
                                             <!-- <ContentControl x:Name="ScreenshotsVisualizer_PluginListScreenshots" Margin="0,10,0,0" /> -->
                                             <!-- original implementation: -->
