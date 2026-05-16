@@ -50,6 +50,12 @@
                         </Border>
                     </AdornerDecorator>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode" Value="CanResize">
+                            <Setter Property="WindowState" Value="Maximized" />
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                            <Setter Property="WindowState" Value="Maximized" />
+                        </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter Property="Content" Value="&#xE923;" TargetName="PART_ButtonMaximize"/>
                             <Setter Property="Padding" Value="8" TargetName="WindowBorder"/>
