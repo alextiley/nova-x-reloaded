@@ -22,9 +22,13 @@
 
                             <Border Padding="{TemplateBinding Padding}">
                                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden"
-                                          DockPanel.Dock="Top" CanContentScroll="True"
-                                          x:Name="ScrollSidebarItems">
-                                    <StackPanel x:Name="PART_PanelSideBarItems" Orientation="Vertical" />
+                                              DockPanel.Dock="Top" CanContentScroll="True"
+                                              x:Name="ScrollSidebarItems" ClipToBounds="True">
+                                    <StackPanel x:Name="PART_PanelSideBarItems" Orientation="Vertical">
+                                        <StackPanel.RenderTransform>
+                                            <TranslateTransform Y="-90" />
+                                        </StackPanel.RenderTransform>
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Border>
                         </DockPanel>
@@ -39,12 +43,22 @@
                             <Setter Property="DockPanel.Dock" Value="Left" TargetName="ScrollSidebarItems" />
                             <Setter Property="Margin" Value="0,0,100,0" TargetName="ScrollSidebarItems" />
                             <Setter Property="Orientation" Value="Horizontal" TargetName="PART_PanelSideBarItems" />
+                            <Setter TargetName="PART_PanelSideBarItems" Property="UIElement.RenderTransform">
+                                <Setter.Value>
+                                    <TranslateTransform X="-90" Y="0" />
+                                </Setter.Value>
+                            </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Settings SidebarPosition}" Value="Bottom">
                             <Setter Property="Margin" Value="8,0,25,0" TargetName="PART_ElemMainMenu" />
                             <Setter Property="DockPanel.Dock" Value="Left" TargetName="PART_ElemMainMenu" />
                             <Setter Property="DockPanel.Dock" Value="Left" TargetName="ScrollSidebarItems" />
                             <Setter Property="Orientation" Value="Horizontal" TargetName="PART_PanelSideBarItems" />
+                            <Setter TargetName="PART_PanelSideBarItems" Property="UIElement.RenderTransform">
+                                <Setter.Value>
+                                    <TranslateTransform X="-90" Y="0" />
+                                </Setter.Value>
+                            </Setter>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
