@@ -125,7 +125,7 @@
 
 
 
-                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,10">
                                     <Button Margin="0,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PART_ButtonPlayAction" Style="{DynamicResource PlayButtonViews}" />
                                     <Button Margin="0,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PART_ButtonContextAction" Style="{DynamicResource ContextButtonViews}" />
                                     <Button Margin="0,0,10,0" MinWidth="20" Name="PART_ButtonMoreActions" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{DynamicResource MoreActionButtonViews}" />
