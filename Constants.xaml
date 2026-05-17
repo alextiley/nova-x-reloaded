@@ -44,7 +44,7 @@
     <sys:Double x:Key="TopPanelSearchBoxWidthNova">120</sys:Double>
     <!--region end-->
 
-    <sys:Double x:Key="PanelTopPanelSeparatorHeight">90</sys:Double>
+    <sys:Double x:Key="PanelTopPanelSeparatorHeight">75</sys:Double>
     <Thickness x:Key="PanelTopPanelSeparator"
                Left="0"
                Top="{StaticResource PanelTopPanelSeparatorHeight}"
