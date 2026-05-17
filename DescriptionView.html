@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <style type="text/css">
-        HTML,BODY
-        {
-            color: {foreground};
-            font-family: "{font_family}";
-            font-size: {font_size}px;
-            margin: 0;
-            padding: 0;
+        html, body, p, i, b, strong, em, blockquote, ul, ol, li, dt, dd, dl, a, h1, h2, h3, h4, h5, h6 {
+          font-family: "{font_family}";
+          font-size: {font_size}px;
+          margin: 0;
+          padding: 0;
+          text-align: left;
+          float: none;
+        }
+
+        html, body, p {
+          color: {foreground};
         }
 
         a {
-            color: {link_foreground};
-            text-decoration: none;
+          color: {link_foreground};
+          text-decoration: none;
         }
-        
+
         img {
-            max-width: 60%;
+          max-width: 60%;
         }
+
+        h1, h2, h3, h4, h5, h6 {
+          font-size: 16px;
+          text-transform: capitalize !important;
+        }
+
+        p { margin-bottom: 12px !important; }
+        ul { margin-bottom: 12px !important; }
+        ol { margin-bottom: 12px !important; }
+        img { margin-top: 12px !important; margin-bottom: 12px !important; }
+        h1 { margin-top: 18px !important; margin-bottom: 12px !important; }
+        h2 { margin-top: 18px !important; margin-bottom: 12px !important; }
+        h3 { margin-top: 18px !important; margin-bottom: 12px !important; }
+        h4 { margin-top: 18px !important; margin-bottom: 12px !important; }
+        h5 { margin-top: 18px !important; margin-bottom: 12px !important; }
+        h6 { margin-top: 18px !important; margin-bottom: 12px !important; }
     </style>
     <title>Game Description</title>
 </head>
-<body>
-<div>
-{text}
-</div>
-</body>
+<body><div class="description">{text}</div></body>
 </html>
