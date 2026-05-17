@@ -32,7 +32,14 @@
                             <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">42</sys:Double>
                         </Track.Resources>
                         <Track.Thumb>
-                            <Thumb Width="8" />
+                            <Thumb Width="6">
+                                <Thumb.Template>
+                                    <ControlTemplate TargetType="{x:Type Thumb}">
+                                        <Border Background="{DynamicResource ThumbFillBrush}"
+                                                CornerRadius="0" />
+                                    </ControlTemplate>
+                                </Thumb.Template>
+                            </Thumb>
                         </Track.Thumb>
                         <Track.DecreaseRepeatButton>
                             <RepeatButton x:Name="UpButton" Style="{DynamicResource ScrollBarTrackButton}"

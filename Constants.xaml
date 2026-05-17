@@ -130,8 +130,8 @@
     <Color x:Key="ToggleButtonNotCheckedBorderColor">#6f6d70</Color>
     <Color x:Key="ToggleButtonNotCheckedHighlightBorderColor">#acabad</Color>
 
-    <Color x:Key="ThumbFillColor">#6f7275</Color>
-    <Color x:Key="ThumbFillHoverColor">#8f9495</Color>
+    <Color x:Key="ThumbFillColor">#5D6f7275</Color>
+    <Color x:Key="ThumbFillHoverColor">#5D8f9495</Color>
 
     <Color x:Key="TextBoxBorderColor">#6f6d70</Color>
     <Color x:Key="TextBoxBorderHoverColor">#acabad</Color>
