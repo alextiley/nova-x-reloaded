@@ -15,7 +15,7 @@
                 <ControlTemplate TargetType="{x:Type Separator}">
                     <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding Background}" 
+                            Background="{TemplateBinding Background}"
                             Height="1"
                             SnapsToDevicePixels="true"/>
                 </ControlTemplate>
@@ -103,7 +103,7 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-    
+
     <!-- SubmenuHeader -->
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
         <Grid Background="Transparent">

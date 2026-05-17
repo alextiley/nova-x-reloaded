@@ -61,7 +61,7 @@
     <sys:Double x:Key="BackgroundImageNoiseBackgroundOpacity">0.015</sys:Double>
     <FontFamily x:Key="FontFamily">Segoe UI</FontFamily>
     <FontFamily x:Key="MonospaceFontFamily">Consolas</FontFamily>
-    <Thickness x:Key="PopupMenuPadding">0,10,0,10</Thickness>
+    <Thickness x:Key="PopupMenuPadding">0,0,0,0</Thickness>
     <Thickness x:Key="PopupBorderThickness">1</Thickness>
     <Thickness x:Key="ControlBorderThickness">0</Thickness>
     <sys:Double x:Key="EllipseBorderThickness">1</sys:Double>
@@ -82,10 +82,10 @@
                   BottomRight="0"
                   BottomLeft="{StaticResource ControlCornerRadiusValue}"/>
     <CornerRadius x:Key="ControlCornerRadiusSmall">0</CornerRadius>
-    <CornerRadius x:Key="MainMenuCornerRadius">8</CornerRadius>
-    <CornerRadius x:Key="GeneralMenuCornerRadius">8</CornerRadius>
-    <CornerRadius x:Key="TrayMenuCornerRadius">5</CornerRadius>
-    <CornerRadius x:Key="PopupCornerRadius">8</CornerRadius>
+    <CornerRadius x:Key="MainMenuCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="GeneralMenuCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="TrayMenuCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="PopupCornerRadius">0</CornerRadius>
     <CornerRadius x:Key="TooltipCornerRadius">8</CornerRadius>
     <CornerRadius x:Key="GridViewCoverCornerRadius">5</CornerRadius>
     <CornerRadius x:Key="GridViewCoverGridBackgroundDisabledCornerRadius">5,5,0,0</CornerRadius>
