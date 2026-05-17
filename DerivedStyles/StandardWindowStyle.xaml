@@ -10,12 +10,12 @@
     <Style x:Key="StandardWindowStyle" TargetType="WindowBase">
         <Setter Property="Background" Value="{DynamicResource StandardWindowBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
         <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
-                <WindowChrome CaptionHeight="50" CornerRadius="8" ResizeBorderThickness="6"
+                <WindowChrome CaptionHeight="35" CornerRadius="0" ResizeBorderThickness="6"
                               NonClientFrameEdges ="None" UseAeroCaptionButtons="False" GlassFrameThickness="0"/>
             </Setter.Value>
         </Setter>
@@ -26,20 +26,21 @@
                         <sys:Boolean x:Key="True">True</sys:Boolean>
                     </ControlTemplate.Resources>
                     <AdornerDecorator>
-                        <Border x:Name="WindowBorder" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="8"
+                        <Border x:Name="WindowBorder" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="0"
+                                Padding="{TemplateBinding Padding}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Background="{TemplateBinding Background}">
                             <Grid>
                                 <Border Background="{DynamicResource NoiseBrush}"
-                                        CornerRadius="8"
+                                        CornerRadius="0"
                                         Opacity="{DynamicResource StandardWindowNoiseBackgroundOpacity}"/>
-                                <ContentPresenter Margin="0,50,0,0"/>
+                                <ContentPresenter Margin="0,35,0,0"/>
                                 <DockPanel DockPanel.Dock="Top" LastChildFill="False">
                                     <DockPanel DockPanel.Dock="Top" LastChildFill="False">
-                                        <TextBlock Text="{TemplateBinding Title}" FontWeight="SemiBold" DockPanel.Dock="Left" Margin="10,15,0,15" VerticalAlignment="Center"
+                                        <TextBlock Text="{TemplateBinding Title}" FontWeight="SemiBold" DockPanel.Dock="Left" Margin="10,10,0,15" VerticalAlignment="Center"
                                                    Foreground="{DynamicResource TextBrush}"
                                                    HorizontalAlignment="Right" FontSize="{DynamicResource FontSizeLarge}" Style="{DynamicResource BaseTextBlockStyle}" x:Name="PART_TextTitle" />
-                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Margin="0,6,6,0">
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Margin="0,0,0,0">
                                             <Button Padding="20,14,20,6" Style="{DynamicResource WindowBarButton}" Content="&#xE921;" x:Name="PART_ButtonMinimize"/>
                                             <Button Style="{DynamicResource WindowBarButton}" Content="&#xE922;" x:Name="PART_ButtonMaximize" />
                                             <Button Style="{DynamicResource WindowBarButtonCloseButton}" Content="&#xE8BB;" x:Name="PART_ButtonClose"/>
