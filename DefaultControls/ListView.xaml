@@ -18,6 +18,7 @@
         <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
           <Grid Margin="1">
             <Border
+              Margin="0,-2,0,0"
               Padding="5,3,5,3"
               Background="#BB303030"
               BorderThickness="1"
