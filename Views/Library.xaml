@@ -55,7 +55,7 @@
                                 <Grid DockPanel.Dock="Left">
                                     <LibraryDetailsView x:Name="PART_ViewDetails" />
                                     <LibraryGridView x:Name="PART_ViewGrid" />
-                                    <LibraryListView x:Name="PART_ViewList" Margin="{DynamicResource PanelTopPanelSeparator}" />
+                                    <LibraryListView x:Name="PART_ViewList" Margin="10,75,10,-5" />
                                 </Grid>
                             </DockPanel>
                             <TopPanel VerticalAlignment="Top" />
