@@ -1533,7 +1533,12 @@
                       </StackPanel>
                     </Expander>
 
-                    <StackPanel Grid.Row="{DynamicResource GridViewSectionOrderGameRelations}">
+                    <StackPanel
+                      Grid.Row="{DynamicResource GridViewSectionOrderGameRelations}"
+                      SnapsToDevicePixels="True"
+                      UseLayoutRounding="True">
+
+                      <!--  Related by Similarity  -->
                       <Expander
                         Margin="0,0,5,0"
                         IsExpanded="True"
@@ -1546,8 +1551,13 @@
                             Cursor="Hand"
                             FontSize="{DynamicResource FontSizeLarge}"
                             FontWeight="SemiBold"
-                            Style="{DynamicResource BaseTextBlockStyle}"
-                            Text="Related by Similarity" />
+                            Style="{DynamicResource BaseTextBlockStyle}">
+                            <TextBlock.Text>
+                              <MultiBinding StringFormat="More like {0}">
+                                <Binding Path="Game.DisplayName" />
+                              </MultiBinding>
+                            </TextBlock.Text>
+                          </TextBlock>
                         </Expander.Header>
                         <StackPanel Margin="0,0,25,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
@@ -1555,6 +1565,7 @@
                         </StackPanel>
                       </Expander>
 
+                      <!--  Related by Series  -->
                       <Expander
                         Margin="0,0,5,0"
                         IsExpanded="True"
@@ -1567,8 +1578,13 @@
                             Cursor="Hand"
                             FontSize="{DynamicResource FontSizeLarge}"
                             FontWeight="SemiBold"
-                            Style="{DynamicResource BaseTextBlockStyle}"
-                            Text="Related by Series" />
+                            Style="{DynamicResource BaseTextBlockStyle}">
+                            <TextBlock.Text>
+                              <MultiBinding StringFormat="More in Series: {0}">
+                                <Binding Path="Game.Series[0]" />
+                              </MultiBinding>
+                            </TextBlock.Text>
+                          </TextBlock>
                         </Expander.Header>
                         <StackPanel Margin="0,0,25,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
@@ -1576,6 +1592,7 @@
                         </StackPanel>
                       </Expander>
 
+                      <!--  Related by Developer  -->
                       <Expander
                         Margin="0,0,5,0"
                         IsExpanded="True"
@@ -1588,8 +1605,13 @@
                             Cursor="Hand"
                             FontSize="{DynamicResource FontSizeLarge}"
                             FontWeight="SemiBold"
-                            Style="{DynamicResource BaseTextBlockStyle}"
-                            Text="Related by Developer" />
+                            Style="{DynamicResource BaseTextBlockStyle}">
+                            <TextBlock.Text>
+                              <MultiBinding StringFormat="More from Developer: {0}">
+                                <Binding Path="Game.Developers[0]" />
+                              </MultiBinding>
+                            </TextBlock.Text>
+                          </TextBlock>
                         </Expander.Header>
                         <StackPanel Margin="0,0,25,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
@@ -1597,6 +1619,7 @@
                         </StackPanel>
                       </Expander>
 
+                      <!--  Related by Publisher  -->
                       <Expander
                         Margin="0,0,5,0"
                         IsExpanded="True"
@@ -1609,8 +1632,13 @@
                             Cursor="Hand"
                             FontSize="{DynamicResource FontSizeLarge}"
                             FontWeight="SemiBold"
-                            Style="{DynamicResource BaseTextBlockStyle}"
-                            Text="Related by Publisher" />
+                            Style="{DynamicResource BaseTextBlockStyle}">
+                            <TextBlock.Text>
+                              <MultiBinding StringFormat="More from Publisher: {0}">
+                                <Binding Path="Game.Publishers[0]" />
+                              </MultiBinding>
+                            </TextBlock.Text>
+                          </TextBlock>
                         </Expander.Header>
                         <StackPanel Margin="0,0,25,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
@@ -1618,7 +1646,6 @@
                         </StackPanel>
                       </Expander>
                     </StackPanel>
-
                     <!--#endregion-->
 
                     <Expander
