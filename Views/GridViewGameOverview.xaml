@@ -1533,92 +1533,91 @@
                       </StackPanel>
                     </Expander>
 
-                    <Expander
-                      Grid.Row="{DynamicResource GridViewSectionOrderGameRelations}"
-                      Margin="0,0,5,0"
-                      IsExpanded="True"
-                      Visibility="{Binding ElementName=GameRelationsVisibilityProxy, Path=Tag}">
-                      <Expander.Header>
-                        <TextBlock
-                          Cursor="Hand"
-                          FontSize="{DynamicResource FontSizeLarge}"
-                          FontWeight="SemiBold"
-                          Style="{DynamicResource BaseTextBlockStyle}"
-                          Text="{DynamicResource LOCGameRelations_RelatedGamesLabel}" />
-                      </Expander.Header>
-                      <StackPanel Margin="0,0,25,15">
-                        <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
-                        <TextBlock x:Name="GameRelationsVisibilityProxy" Visibility="Collapsed">
-                          <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                              <Setter Property="Tag" Value="Collapsed" />
-                              <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=Panel_GameRelations_SimilarGamesControl, Path=Visibility}" Value="Visible">
-                                  <Setter Property="Tag" Value="Visible" />
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=Panel_GameRelations_SameSeriesControl, Path=Visibility}" Value="Visible">
-                                  <Setter Property="Tag" Value="Visible" />
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=Panel_GameRelations_SameDeveloperControl, Path=Visibility}" Value="Visible">
-                                  <Setter Property="Tag" Value="Visible" />
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=Panel_GameRelations_SamePublisherControl, Path=Visibility}" Value="Visible">
-                                  <Setter Property="Tag" Value="Visible" />
-                                </DataTrigger>
-                              </Style.Triggers>
-                            </Style>
-                          </TextBlock.Style>
-                        </TextBlock>
-                        <Expander
-                          x:Name="Panel_GameRelations_SimilarGamesControl"
-                          Margin="0,5,0,0"
-                          Header="{DynamicResource LOCGameRelations_SimilarGamesLabel}"
-                          IsExpanded="True"
-                          Visibility="{PluginSettings Plugin=GameRelations,
-                                                      Path=SimilarGamesControlSettings.IsVisible,
-                                                      Converter={StaticResource BooleanToVisibilityConverter},
-                                                      FallbackValue=Collapsed}">
+                    <StackPanel Grid.Row="{DynamicResource GridViewSectionOrderGameRelations}">
+                      <Expander
+                        Margin="0,0,5,0"
+                        IsExpanded="True"
+                        Visibility="{PluginSettings Plugin=GameRelations,
+                                                    Path=SimilarGamesControlSettings.IsVisible,
+                                                    Converter={StaticResource BooleanToVisibilityConverter},
+                                                    FallbackValue=Collapsed}">
+                        <Expander.Header>
+                          <TextBlock
+                            Cursor="Hand"
+                            FontSize="{DynamicResource FontSizeLarge}"
+                            FontWeight="SemiBold"
+                            Style="{DynamicResource BaseTextBlockStyle}"
+                            Text="Related by Similarity" />
+                        </Expander.Header>
+                        <StackPanel Margin="0,0,25,15">
+                          <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SimilarGamesControl" Margin="0,5,0,0" />
-                        </Expander>
+                        </StackPanel>
+                      </Expander>
 
-                        <Expander
-                          x:Name="Panel_GameRelations_SameSeriesControl"
-                          Margin="0,5,0,0"
-                          Header="{DynamicResource LOCGameRelations_SameSeriesLabel}"
-                          IsExpanded="True"
-                          Visibility="{PluginSettings Plugin=GameRelations,
-                                                      Path=SameSeriesControlSettings.IsVisible,
-                                                      Converter={StaticResource BooleanToVisibilityConverter},
-                                                      FallbackValue=Collapsed}">
+                      <Expander
+                        Margin="0,0,5,0"
+                        IsExpanded="True"
+                        Visibility="{PluginSettings Plugin=GameRelations,
+                                                    Path=SameSeriesControlSettings.IsVisible,
+                                                    Converter={StaticResource BooleanToVisibilityConverter},
+                                                    FallbackValue=Collapsed}">
+                        <Expander.Header>
+                          <TextBlock
+                            Cursor="Hand"
+                            FontSize="{DynamicResource FontSizeLarge}"
+                            FontWeight="SemiBold"
+                            Style="{DynamicResource BaseTextBlockStyle}"
+                            Text="Related by Series" />
+                        </Expander.Header>
+                        <StackPanel Margin="0,0,25,15">
+                          <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SameSeriesControl" Margin="0,5,0,0" />
-                        </Expander>
+                        </StackPanel>
+                      </Expander>
 
-                        <Expander
-                          x:Name="Panel_GameRelations_SameDeveloperControl"
-                          Margin="0,5,0,0"
-                          Header="{DynamicResource LOCGameRelations_SameDeveloperLabel}"
-                          IsExpanded="True"
-                          Visibility="{PluginSettings Plugin=GameRelations,
-                                                      Path=SameDeveloperControlSettings.IsVisible,
-                                                      Converter={StaticResource BooleanToVisibilityConverter},
-                                                      FallbackValue=Collapsed}">
+                      <Expander
+                        Margin="0,0,5,0"
+                        IsExpanded="True"
+                        Visibility="{PluginSettings Plugin=GameRelations,
+                                                    Path=SameDeveloperControlSettings.IsVisible,
+                                                    Converter={StaticResource BooleanToVisibilityConverter},
+                                                    FallbackValue=Collapsed}">
+                        <Expander.Header>
+                          <TextBlock
+                            Cursor="Hand"
+                            FontSize="{DynamicResource FontSizeLarge}"
+                            FontWeight="SemiBold"
+                            Style="{DynamicResource BaseTextBlockStyle}"
+                            Text="Related by Developer" />
+                        </Expander.Header>
+                        <StackPanel Margin="0,0,25,15">
+                          <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SameDeveloperControl" Margin="0,5,0,0" />
-                        </Expander>
+                        </StackPanel>
+                      </Expander>
 
-                        <Expander
-                          x:Name="Panel_GameRelations_SamePublisherControl"
-                          Margin="0,5,0,0"
-                          Header="{DynamicResource LOCGameRelations_SamePublisherLabel}"
-                          IsExpanded="True"
-                          Visibility="{PluginSettings Plugin=GameRelations,
-                                                      Path=SamePublisherControlSettings.IsVisible,
-                                                      Converter={StaticResource BooleanToVisibilityConverter},
-                                                      FallbackValue=Collapsed}">
+                      <Expander
+                        Margin="0,0,5,0"
+                        IsExpanded="True"
+                        Visibility="{PluginSettings Plugin=GameRelations,
+                                                    Path=SamePublisherControlSettings.IsVisible,
+                                                    Converter={StaticResource BooleanToVisibilityConverter},
+                                                    FallbackValue=Collapsed}">
+                        <Expander.Header>
+                          <TextBlock
+                            Cursor="Hand"
+                            FontSize="{DynamicResource FontSizeLarge}"
+                            FontWeight="SemiBold"
+                            Style="{DynamicResource BaseTextBlockStyle}"
+                            Text="Related by Publisher" />
+                        </Expander.Header>
+                        <StackPanel Margin="0,0,25,15">
+                          <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SamePublisherControl" Margin="0,5,0,0" />
-                        </Expander>
-
-                      </StackPanel>
-                    </Expander>
+                        </StackPanel>
+                      </Expander>
+                    </StackPanel>
 
                     <!--#endregion-->
 
