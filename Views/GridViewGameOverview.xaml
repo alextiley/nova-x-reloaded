@@ -1546,7 +1546,8 @@
                           Style="{DynamicResource BaseTextBlockStyle}"
                           Text="{DynamicResource LOCGameRelations_RelatedGamesLabel}" />
                       </Expander.Header>
-                      <StackPanel Margin="0,0,10,0">
+                      <StackPanel Margin="0,0,25,15">
+                        <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                         <TextBlock x:Name="GameRelationsVisibilityProxy" Visibility="Collapsed">
                           <TextBlock.Style>
                             <Style TargetType="TextBlock">
