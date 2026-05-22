@@ -201,63 +201,44 @@
 
                   <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                      <!--  Notice we removed the local Visibility property and moved it entirely into the Style below  -->
+                      <!--  1. Default to Collapsed here  -->
                       <StackPanel
+                        x:Name="RootPanel"
                         Margin="0,0,0,-19"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
-                        Orientation="Horizontal">
-
-                        <StackPanel.Style>
-                          <Style TargetType="StackPanel">
-                            <!--  Hide this ribbon template by default for every tag  -->
-                            <Setter Property="Visibility" Value="Collapsed" />
-                            <Style.Triggers>
-                              <!--
-                                Because we are looping through Game.Tags, the DataContext here is the Tag itself.
-                                We just check its "Name" property directly.
-                              -->
-                              <DataTrigger Binding="{Binding Name}" Value="[PA] Completed">
-                                <Setter Property="Visibility" Value="Visible" />
-                              </DataTrigger>
-                              <!--
-                                3. HIDE the ribbon if the mouse is hovering over the game card.
-                                Because this is last, it overrides the Visible trigger above it!
-                              -->
-                              <!-- <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                              </DataTrigger>-->
-
-                              <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                  <Condition Binding="{Settings DarkenUninstalledGamesGrid}" Value="True" />
-                                  <Condition Binding="{Binding DataContext.Game.IsInstalled, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Value="False" />
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Opacity" Value="0.7" />
-                              </MultiDataTrigger>
-
-                            </Style.Triggers>
-                          </Style>
-                        </StackPanel.Style>
+                        Orientation="Horizontal"
+                        Visibility="Collapsed">
 
                         <Grid VerticalAlignment="Center">
+
+                          <!--  YOUR BORDER  -->
                           <Border
                             Margin="20,-10,0,0"
                             VerticalAlignment="Center"
                             Background="#1fadff"
                             CornerRadius="0,4,4,0">
+                            <!--  We wrap the text and the shadow together so they are the exact same size  -->
+                            <Grid>
+                              <TextBlock
+                                Padding="25,2,8,3"
+                                VerticalAlignment="Center"
+                                FontSize="{DynamicResource FontSizeSmall}"
+                                Foreground="#ffffff"
+                                Text="100% Complete"
+                                TextTrimming="CharacterEllipsis" />
 
-                            <TextBlock
-                              Padding="25,2,8,3"
-                              VerticalAlignment="Center"
-                              FontSize="{DynamicResource FontSizeSmall}"
-                              Foreground="#ffffff"
-                              Text="100% Complete"
-                              TextTrimming="CharacterEllipsis" />
+                              <!--  NEW: FIXED BORDER SHADOW (Now stretches perfectly over the blue box)  -->
+                              <Border
+                                x:Name="DarkBorder"
+                                Background="#80000000"
+                                CornerRadius="0,4,4,0"
+                                Visibility="Collapsed" />
+                            </Grid>
                           </Border>
 
+                          <!--  YOUR IMAGE  -->
                           <Image
-                            x:Name="RibbonOverlay"
                             Width="44"
                             Height="44"
                             HorizontalAlignment="Left"
@@ -274,8 +255,42 @@
                                 Color="#000000" />
                             </Image.Effect>
                           </Image>
+
+                          <!--  NEW: IMAGE SHADOW  -->
+                          <Rectangle
+                            x:Name="DarkImage"
+                            Width="44"
+                            Height="44"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Fill="#40000000"
+                            Visibility="Collapsed">
+                            <Rectangle.OpacityMask>
+                              <ImageBrush ImageSource="{ThemeFile 'Images/ribbon.png'}" Stretch="Uniform" />
+                            </Rectangle.OpacityMask>
+                          </Rectangle>
+
                         </Grid>
                       </StackPanel>
+
+                      <!--  2. ALL LOGIC GOES HERE AT THE BOTTOM  -->
+                      <DataTemplate.Triggers>
+                        <!--  Make the whole ribbon visible if it has the tag  -->
+                        <DataTrigger Binding="{Binding Name}" Value="[PA] Completed">
+                          <Setter TargetName="RootPanel" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+
+                        <!--  If uninstalled, make the two black shadow overlays visible  -->
+                        <MultiDataTrigger>
+                          <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Settings DarkenUninstalledGamesGrid}" Value="True" />
+                            <Condition Binding="{Binding DataContext.Game.IsInstalled, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Value="False" />
+                          </MultiDataTrigger.Conditions>
+                          <Setter TargetName="DarkBorder" Property="Visibility" Value="Visible" />
+                          <Setter TargetName="DarkImage" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+                      </DataTemplate.Triggers>
+
                     </DataTemplate>
                   </ItemsControl.ItemTemplate>
                 </ItemsControl>
