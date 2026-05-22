@@ -203,7 +203,7 @@
                     <DataTemplate>
                       <!--  Notice we removed the local Visibility property and moved it entirely into the Style below  -->
                       <StackPanel
-                        Margin="0,0,0,-21"
+                        Margin="0,0,0,-19"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Orientation="Horizontal">
@@ -227,6 +227,15 @@
                               <!-- <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
                                 <Setter Property="Visibility" Value="Collapsed" />
                               </DataTrigger>-->
+
+                              <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                  <Condition Binding="{Settings DarkenUninstalledGamesGrid}" Value="True" />
+                                  <Condition Binding="{Binding DataContext.Game.IsInstalled, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Value="False" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Opacity" Value="0.7" />
+                              </MultiDataTrigger>
+
                             </Style.Triggers>
                           </Style>
                         </StackPanel.Style>
