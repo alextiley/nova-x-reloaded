@@ -79,11 +79,23 @@
 
               <!--  3. The Slider overlay (Equivalent to position: absolute; bottom: 0; left: 0;)  -->
               <Border
-                Padding="0,20,30,0"
+                x:Name="ZoomControl"
+                Margin="25,0,41,0"
+                Padding="0,5,10,5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Background="Transparent">
-
+                Background="{DynamicResource PanelSeparatorBrush}"
+                Tag="{DynamicResource GridViewShowZoomControls}">
+                <Border.Style>
+                  <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Mode=OneWay}" Value="True">
+                        <Setter Property="Visibility" Value="Visible" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </Border.Style>
                 <StackPanel Margin="5" Orientation="Horizontal">
                   <Label Margin="10,0,10,0" Content="{DynamicResource LOCZoomLabel}" />
                   <SliderWithPopup x:Name="PART_SliderZoom" Width="200" />
