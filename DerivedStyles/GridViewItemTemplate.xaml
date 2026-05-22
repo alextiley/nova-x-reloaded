@@ -191,7 +191,7 @@
                   </StackPanel>
                 </Viewbox>
                 <!--  Steam-style 100% achievement badge  -->
-                <ItemsControl ItemsSource="{Binding Game.Tags}">
+                <ItemsControl Panel.ZIndex="99" ItemsSource="{Binding Game.Tags}">
                   <!--  We use a Grid panel so that if a game has 10 tags, the 9 hidden ones take up exactly 0 pixels of space  -->
                   <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -204,7 +204,7 @@
                       <!--  1. Default to Collapsed here  -->
                       <StackPanel
                         x:Name="RootPanel"
-                        Margin="0,0,0,-19"
+                        Margin="0,0,0,-23"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Orientation="Horizontal"
