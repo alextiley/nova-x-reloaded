@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:p="clr-namespace:Playnite;assembly=Playnite"
                     xmlns:popt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     mc:Ignorable="d">
@@ -136,6 +136,79 @@
                                                 Content="&#xE946;" FontFamily="Segoe MDL2 Assets" />
                                     </StackPanel>
                                 </Viewbox>
+                                <!-- Steam-style 100% achievement badge -->
+                                <ItemsControl ItemsSource="{Binding Game.Tags}">
+                                    <!-- We use a Grid panel so that if a game has 10 tags, the 9 hidden ones take up exactly 0 pixels of space -->
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Grid />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <!-- Notice we removed the local Visibility property and moved it entirely into the Style below -->
+                                            <StackPanel Orientation="Horizontal"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Bottom"
+                                                        Margin="0,0,0,-21">
+                                                
+                                                <StackPanel.Style>
+                                                    <Style TargetType="StackPanel">
+                                                        <!-- Hide this ribbon template by default for every tag -->
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Style.Triggers>
+                                                            <!-- Because we are looping through Game.Tags, the DataContext here is the Tag itself. 
+                                                                We just check its "Name" property directly. -->
+                                                            <DataTrigger Binding="{Binding Name}" Value="[PA] Completed">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+
+                                                                                                          
+                                              <!-- 3. HIDE the ribbon if the mouse is hovering over the game card. 
+                                                  Because this is last, it overrides the Visible trigger above it! -->
+                                              <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                                  <Setter Property="Visibility" Value="Collapsed" />
+                                              </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </StackPanel.Style>
+
+                                                <Grid VerticalAlignment="Center">
+                                                    <Border Background="#1fadff"
+                                                            CornerRadius="0,4,4,0"
+                                                            VerticalAlignment="Center"
+                                                            Margin="20,-10,0,0">
+
+                                                        <TextBlock Text="100% Complete"
+                                                                  FontSize="{DynamicResource FontSizeSmall}"
+                                                                  VerticalAlignment="Center"
+                                                                  Padding="25,2,8,3"
+                                                                  Foreground="#ffffff"
+                                                                  TextTrimming="CharacterEllipsis"/>
+                                                    </Border>
+
+                                                    <Image x:Name="RibbonOverlay"
+                                                          Source="{ThemeFile 'Images/ribbon.png'}"
+                                                          Width="44"
+                                                          Height="44"
+                                                          Stretch="Uniform"
+                                                          RenderOptions.BitmapScalingMode="Fant"
+                                                          HorizontalAlignment="Left"
+                                                          VerticalAlignment="Center">
+                                                        <Image.Effect>
+                                                            <DropShadowEffect Color="#000000"
+                                                                              BlurRadius="6"
+                                                                              ShadowDepth="2"
+                                                                              Opacity="0.8"
+                                                                              RenderingBias="Performance" />
+                                                        </Image.Effect>
+                                                    </Image>
+                                                </Grid>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </Grid>
 
                             <Border x:Name="ShowGameNameBorder" Background="Transparent"
@@ -152,7 +225,7 @@
                                 </Border.Style>
                                 <TextBlock x:Name="ShowGameName" Text="{Binding DisplayName}"
                                            Foreground="{DynamicResource TextBrush}"
-                                           Style="{DynamicResource BaseTextBlockStyle}"                                                                   
+                                           Style="{DynamicResource BaseTextBlockStyle}"
                                            TextAlignment="Center" TextTrimming="CharacterEllipsis"
                                            VerticalAlignment="Center"
                                            Padding="2,5,2,5" Grid.Row="1" Grid.Column="0"
@@ -169,7 +242,7 @@
                                 <TextBlock Text="{Binding Playtime, Mode=OneWay, Converter={StaticResource PlayTimeToStringConverter}, IsAsync=True}"
                                            Foreground="{DynamicResource GridViewCoverSubtitleBrush}"
                                            FontSize="{DynamicResource FontSizeSmall}"
-                                           Style="{DynamicResource BaseTextBlockStyle}"                                                                   
+                                           Style="{DynamicResource BaseTextBlockStyle}"
                                            TextAlignment="Left" TextTrimming="CharacterEllipsis"
                                            VerticalAlignment="Center"
                                            Padding="3,4,2,2" />
@@ -425,7 +498,7 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style
         x:Key="DuplicateHider_IconContentControlStyle1"
         BasedOn="{StaticResource {x:Type ContentControl}}"
