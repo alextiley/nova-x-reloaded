@@ -204,7 +204,7 @@
                       <!--  1. Default to Collapsed here  -->
                       <StackPanel
                         x:Name="RootPanel"
-                        Margin="0,0,0,-23"
+                        Margin="0,0,0,-22"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Orientation="Horizontal"
