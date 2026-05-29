@@ -35,9 +35,6 @@
             </Border>
             <Grid Margin="{DynamicResource PanelTopPanelSeparator}" DockPanel.Dock="Left">
 
-              <!--  Row definitions removed so elements layer over each other  -->
-
-              <!--  1. The list box now fills the entire Grid space  -->
               <ExtendedListBox
                 x:Name="PART_ListGames"
                 Padding="5"
@@ -56,7 +53,6 @@
                 </ExtendedListBox.GroupStyle>
               </ExtendedListBox>
 
-              <!--  2. Empty state text overlay  -->
               <TextBlock
                 Margin="0,40,0,0"
                 HorizontalAlignment="Center"
@@ -77,33 +73,102 @@
                 </TextBlock.Style>
               </TextBlock>
 
-              <!--  3. The Slider overlay (Equivalent to position: absolute; bottom: 0; left: 0;)  -->
-              <Border
-                x:Name="ZoomControl"
-                Margin="25,0,41,0"
-                Padding="0,5,10,5"
-                HorizontalAlignment="Left"
+              <Grid
+                x:Name="ZoomHoverZone"
+                MaxHeight="1"
                 VerticalAlignment="Bottom"
-                Background="{DynamicResource PanelSeparatorBrush}"
-                Tag="{DynamicResource GridViewShowZoomControls}">
-                <Border.Style>
-                  <Style TargetType="Border">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                    <Style.Triggers>
-                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Mode=OneWay}" Value="True">
-                        <Setter Property="Visibility" Value="Visible" />
-                      </DataTrigger>
-                    </Style.Triggers>
-                  </Style>
-                </Border.Style>
-                <StackPanel Margin="5" Orientation="Horizontal">
-                  <Label Margin="10,0,10,0" Content="{DynamicResource LOCZoomLabel}" />
-                  <SliderWithPopup x:Name="PART_SliderZoom" Width="200" />
-                </StackPanel>
-              </Border>
+                Background="Transparent">
+                <Border
+                  x:Name="ZoomControl"
+                  Margin="25,0,41,0"
+                  Padding="0,5,10,5"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Bottom"
+                  Background="{DynamicResource PanelSeparatorBrush}"
+                  Opacity="0"
+                  Tag="{DynamicResource GridViewShowZoomControls}">
+                  <Border.RenderTransform>
+                    <TranslateTransform Y="20" />
+                  </Border.RenderTransform>
+                  <Border.Style>
+                    <Style TargetType="Border">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Mode=OneWay}" Value="True">
+                          <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </Border.Style>
+                  <StackPanel Margin="5" Orientation="Horizontal">
+                    <Label Margin="10,0,10,0" Content="{DynamicResource LOCZoomLabel}" />
+                    <SliderWithPopup x:Name="PART_SliderZoom" Width="200" />
+                  </StackPanel>
+                </Border>
+              </Grid>
 
             </Grid>
           </DockPanel>
+
+          <ControlTemplate.Triggers>
+
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition SourceName="ZoomHoverZone" Property="IsMouseOver" Value="False" />
+                <Condition SourceName="ZoomControl" Property="IsKeyboardFocusWithin" Value="False" />
+              </MultiTrigger.Conditions>
+
+              <MultiTrigger.EnterActions>
+                <BeginStoryboard x:Name="HideZoomStoryboard">
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="ZoomHoverZone"
+                      Storyboard.TargetProperty="MaxHeight"
+                      To="1"
+                      Duration="0:0:0.3" />
+                    <DoubleAnimation
+                      Storyboard.TargetName="ZoomControl"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0"
+                      Duration="0:0:0.2" />
+                    <DoubleAnimation
+                      Storyboard.TargetName="ZoomControl"
+                      Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                      To="20"
+                      Duration="0:0:0.3" />
+                  </Storyboard>
+                </BeginStoryboard>
+              </MultiTrigger.EnterActions>
+
+              <MultiTrigger.ExitActions>
+                <BeginStoryboard x:Name="ShowZoomStoryboard">
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="ZoomHoverZone"
+                      Storyboard.TargetProperty="MaxHeight"
+                      To="100"
+                      Duration="0:0:0.25" />
+                    <DoubleAnimation
+                      Storyboard.TargetName="ZoomControl"
+                      Storyboard.TargetProperty="Opacity"
+                      To="1"
+                      Duration="0:0:0.2" />
+                    <DoubleAnimation
+                      Storyboard.TargetName="ZoomControl"
+                      Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                      To="0"
+                      Duration="0:0:0.25">
+                      <DoubleAnimation.EasingFunction>
+                        <CubicEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                  </Storyboard>
+                </BeginStoryboard>
+              </MultiTrigger.ExitActions>
+            </MultiTrigger>
+
+          </ControlTemplate.Triggers>
+
         </ControlTemplate>
       </Setter.Value>
     </Setter>
