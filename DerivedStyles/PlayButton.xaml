@@ -47,16 +47,40 @@
   </Style>
 
   <Style x:Key="PlayButtonViews" TargetType="{x:Type Button}">
-    <Setter Property="Background" Value="#007738" />
+    <Style.Resources>
+      <LinearGradientBrush x:Key="SteamPlayDefault" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <TransformGroup>
+            <ScaleTransform CenterX="0.25" CenterY="0" ScaleX="3.3" ScaleY="1" />
+          </TransformGroup>
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#70d61d" />
+        <GradientStop Offset="0.6" Color="#01a75b" />
+      </LinearGradientBrush>
+
+      <LinearGradientBrush x:Key="SteamPlayHover" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <TransformGroup>
+            <ScaleTransform CenterX="0" CenterY="0" ScaleX="3.3" ScaleY="1" />
+          </TransformGroup>
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#70d61d" />
+        <GradientStop Offset="0.6" Color="#01a75b" />
+      </LinearGradientBrush>
+    </Style.Resources>
+
+    <Setter Property="Background" Value="{StaticResource SteamPlayDefault}" />
     <Setter Property="Foreground" Value="White" />
     <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Padding" Value="0,5,0,5" />
-    <Setter Property="FontWeight" Value="Bold" />
-    <Setter Property="FontSize" Value="{DynamicResource FontSizeLarge}" />
+    <Setter Property="FontWeight" Value="Light" />
+    <Setter Property="FontSize" Value="20" />
+    <Setter Property="FontFamily" Value="Motiva Sans, Inter, Arial, sans-serif" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="MinHeight" Value="54" />
     <Setter Property="MinWidth" Value="178" />
+
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Button}">
@@ -66,62 +90,114 @@
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}" />
+
+            <Border
+              x:Name="HoverBorder"
+              Background="{StaticResource SteamPlayHover}"
               CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
-              Opacity="1">
+              Opacity="0" />
+
+            <StackPanel
+              Margin="{TemplateBinding Padding}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              Orientation="Horizontal">
+              <Path
+                Width="13"
+                Height="15"
+                Margin="0,0,10,0"
+                Data="M65.321,33.521c-11.274-6.615-20.342-1.471-20.342,11.52V210.96c0,12.989,9.068,18.135,20.342,11.521l137.244-82.348 c11.274-6.618,11.274-17.646,0-24.509L65.321,33.521z"
+                Fill="#c1ffcb"
+                Stretch="Uniform" />
               <TextBlock
-                Margin="{TemplateBinding Padding}"
-                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                VerticalAlignment="Center"
+                FontFamily="{TemplateBinding FontFamily}"
+                FontSize="{TemplateBinding FontSize}"
+                FontWeight="{TemplateBinding FontWeight}"
+                Foreground="{TemplateBinding Foreground}"
                 Style="{StaticResource BaseTextBlockStyle}"
                 Tag="{DynamicResource LOCPlayGame}"
                 Text="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Mode=OneWay, Converter={StaticResource StringToUpperCaseConverter}}" />
-            </Border>
+            </StackPanel>
           </Grid>
+
           <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Grid" Property="Opacity" Value="0.5" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Trigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="HoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="1"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.EnterActions>
+              <Trigger.ExitActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="HoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.ExitActions>
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Style.Triggers>
-      <Trigger Property="IsMouseOver" Value="true">
-        <Trigger.EnterActions>
-          <BeginStoryboard>
-            <Storyboard TargetProperty="(Background).(SolidColorBrush.Color)">
-              <ColorAnimation
-                FillBehavior="HoldEnd"
-                To="#008746"
-                Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.EnterActions>
-        <Trigger.ExitActions>
-          <BeginStoryboard>
-            <Storyboard TargetProperty="(Background).(SolidColorBrush.Color)">
-              <ColorAnimation
-                FillBehavior="HoldEnd"
-                To="#007738"
-                Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.ExitActions>
-      </Trigger>
-    </Style.Triggers>
   </Style>
 
   <Style x:Key="ContextButtonViews" TargetType="{x:Type Button}">
-    <Setter Property="Background" Value="#303030" />
+    <Style.Resources>
+      <LinearGradientBrush x:Key="SteamInstallDefault" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <TransformGroup>
+            <ScaleTransform CenterX="0.25" CenterY="0" ScaleX="3.3" ScaleY="1" />
+          </TransformGroup>
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#47bfff" />
+        <GradientStop Offset="0.6" Color="#1a44c2" />
+      </LinearGradientBrush>
+      <LinearGradientBrush x:Key="SteamInstallHover" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <TransformGroup>
+            <ScaleTransform CenterX="0" CenterY="0" ScaleX="3.3" ScaleY="1" />
+          </TransformGroup>
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#47bfff" />
+        <GradientStop Offset="0.6" Color="#1a44c2" />
+      </LinearGradientBrush>
+    </Style.Resources>
+
+    <Setter Property="Background" Value="{StaticResource SteamInstallDefault}" />
     <Setter Property="Foreground" Value="White" />
     <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Padding" Value="10,5,10,5" />
-    <Setter Property="FontWeight" Value="Bold" />
-    <Setter Property="FontSize" Value="16" />
+    <Setter Property="FontWeight" Value="Light" />
+    <Setter Property="FontSize" Value="20" />
+    <Setter Property="FontFamily" Value="Motiva Sans, Inter, Arial, sans-serif" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="MinHeight" Value="54" />
     <Setter Property="MinWidth" Value="178" />
+
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Button}">
@@ -131,48 +207,77 @@
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}" />
+
+            <Border
+              x:Name="HoverBorder"
+              Background="{StaticResource SteamInstallHover}"
               CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
-              Opacity="1" />
-            <ContentPresenter
+              Opacity="0" />
+
+            <StackPanel
               Margin="{TemplateBinding Padding}"
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-              RecognizesAccessKey="True" />
+              Orientation="Horizontal">
+              <Path
+                x:Name="InstallIcon"
+                Width="20"
+                Height="20"
+                Margin="0,0,10,0"
+                Data="M 29,23 H 29 V 27 H 7 V 23 H 2 V 32 H 34 V 23 H 29 Z M 20,14.1716 L 24.5858,9.58578 L 27.4142,12.4142 L 18,21.8284 L 8.58582,12.4142 L 11.4142,9.58578 L 16,14.1715 V 2 H 20 V 14.1716 Z"
+                Fill="#cbeeff"
+                Stretch="Uniform" />
+              <TextBlock
+                VerticalAlignment="Center"
+                FontFamily="{TemplateBinding FontFamily}"
+                FontSize="{TemplateBinding FontSize}"
+                FontWeight="{TemplateBinding FontWeight}"
+                Foreground="{TemplateBinding Foreground}"
+                Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Content, Mode=OneWay, Converter={StaticResource StringToUpperCaseConverter}}" />
+            </StackPanel>
           </Grid>
+
           <ControlTemplate.Triggers>
-            <Trigger Property="IsEnabled" Value="True" />
             <Trigger Property="IsEnabled" Value="False">
-              <Setter TargetName="DefaultBorder" Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" />
               <Setter TargetName="Grid" Property="Opacity" Value="0.5" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Trigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="HoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="1"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.EnterActions>
+              <Trigger.ExitActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="HoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.ExitActions>
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Style.Triggers>
-      <Trigger Property="IsMouseOver" Value="true">
-        <Trigger.EnterActions>
-          <BeginStoryboard>
-            <Storyboard TargetProperty="(Background).(SolidColorBrush.Color)">
-              <ColorAnimation
-                FillBehavior="HoldEnd"
-                To="#454545"
-                Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.EnterActions>
-        <Trigger.ExitActions>
-          <BeginStoryboard>
-            <Storyboard TargetProperty="(Background).(SolidColorBrush.Color)">
-              <ColorAnimation
-                FillBehavior="HoldEnd"
-                To="#303030"
-                Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.ExitActions>
-      </Trigger>
-    </Style.Triggers>
   </Style>
 
   <Style x:Key="MoreActionButtonViews" TargetType="{x:Type Button}">
