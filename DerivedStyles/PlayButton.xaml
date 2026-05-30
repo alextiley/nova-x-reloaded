@@ -192,7 +192,7 @@
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Padding" Value="10,5,10,5" />
     <Setter Property="FontWeight" Value="Light" />
-    <Setter Property="FontSize" Value="20" />
+    <Setter Property="FontSize" Value="18" />
     <Setter Property="FontFamily" Value="Motiva Sans, Inter, Arial, sans-serif" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="MinHeight" Value="54" />
@@ -208,7 +208,6 @@
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
               CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}" />
-
             <Border
               x:Name="HoverBorder"
               Background="{StaticResource SteamInstallHover}"
@@ -220,15 +219,45 @@
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
               Orientation="Horizontal">
-              <Path
-                x:Name="InstallIcon"
+
+              <Grid
                 Width="20"
                 Height="20"
-                Margin="0,0,10,0"
-                Data="M 29,23 H 29 V 27 H 7 V 23 H 2 V 32 H 34 V 23 H 29 Z M 20,14.1716 L 24.5858,9.58578 L 27.4142,12.4142 L 18,21.8284 L 8.58582,12.4142 L 11.4142,9.58578 L 16,14.1715 V 2 H 20 V 14.1716 Z"
-                Fill="#cbeeff"
-                Stretch="Uniform" />
+                Margin="0,0,10,0">
+                <Path
+                  x:Name="Icon_INSTALL"
+                  Data="M 29,23 H 29 V 27 H 7 V 23 H 2 V 32 H 34 V 23 H 29 Z M 20,14.1716 L 24.5858,9.58578 L 27.4142,12.4142 L 18,21.8284 L 8.58582,12.4142 L 11.4142,9.58578 L 16,14.1715 V 2 H 20 V 14.1716 Z"
+                  Fill="#cbeeff"
+                  Stretch="Uniform"
+                  Visibility="Collapsed" />
+                <Canvas
+                  x:Name="Icon_CANCEL"
+                  Width="16"
+                  Height="16"
+                  Visibility="Collapsed">
+                  <Line
+                    Stroke="#ffffff"
+                    StrokeEndLineCap="Round"
+                    StrokeStartLineCap="Round"
+                    StrokeThickness="3.5"
+                    X1="2"
+                    X2="14"
+                    Y1="2"
+                    Y2="14" />
+                  <Line
+                    Stroke="#ffffff"
+                    StrokeEndLineCap="Round"
+                    StrokeStartLineCap="Round"
+                    StrokeThickness="3.5"
+                    X1="14"
+                    X2="2"
+                    Y1="2"
+                    Y2="14" />
+                </Canvas>
+              </Grid>
+
               <TextBlock
+                x:Name="ButtonText"
                 VerticalAlignment="Center"
                 FontFamily="{TemplateBinding FontFamily}"
                 FontSize="{TemplateBinding FontSize}"
@@ -239,6 +268,22 @@
           </Grid>
 
           <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="INSTALL">
+              <Setter TargetName="Icon_INSTALL" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="INSTALLING">
+              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="UNINSTALLING">
+              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="LAUNCHING">
+              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="RUNNING">
+              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Grid" Property="Opacity" Value="0.5" />
             </Trigger>
