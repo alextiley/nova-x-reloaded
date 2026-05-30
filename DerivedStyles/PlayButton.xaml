@@ -90,12 +90,12 @@
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}" />
+              CornerRadius="2,0,0,2" />
 
             <Border
               x:Name="HoverBorder"
               Background="{StaticResource SteamPlayHover}"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
+              CornerRadius="2,0,0,2"
               Opacity="0" />
 
             <StackPanel
@@ -207,11 +207,11 @@
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}" />
+              CornerRadius="2,0,0,2" />
             <Border
               x:Name="HoverBorder"
               Background="{StaticResource SteamInstallHover}"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
+              CornerRadius="2,0,0,2"
               Opacity="0" />
 
             <StackPanel
@@ -396,12 +396,12 @@
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}" />
+              CornerRadius="0,2,2,0" />
 
             <Border
               x:Name="HoverBorder"
               Background="#ffffff"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
+              CornerRadius="0,2,2,0"
               IsHitTestVisible="False"
               Opacity="0"
               Visibility="Visible" />
@@ -409,7 +409,7 @@
             <Border
               x:Name="GreenHoverBorder"
               Background="{StaticResource SteamGreenHoverGradient}"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
+              CornerRadius="0,2,2,0"
               IsHitTestVisible="False"
               Opacity="0"
               Visibility="Collapsed" />
@@ -417,7 +417,7 @@
             <Border
               x:Name="BlueHoverBorder"
               Background="{StaticResource SteamInstallHover}"
-              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
+              CornerRadius="0,2,2,0"
               IsHitTestVisible="False"
               Opacity="0"
               Visibility="Collapsed" />
