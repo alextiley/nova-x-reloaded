@@ -1006,7 +1006,7 @@
                               Margin="0"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Center"
-                              Background="#37393e"
+                              Background="#77555555"
                               Foreground="{StaticResource BronzeBrush}"
                               Maximum="{Binding Path=Total, FallbackValue=0}"
                               Value="{Binding Path=Unlocked, FallbackValue=0}">
