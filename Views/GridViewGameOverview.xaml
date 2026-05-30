@@ -268,7 +268,12 @@
                   <ContentControl
                     x:Name="PlayState_GameStateSwitchControl"
                     Grid.Column="5"
+                    Width="32"
+                    Height="32"
+                    MinWidth="32"
+                    MinHeight="32"
                     Margin="10,0,0,0"
+                    Padding="0"
                     VerticalAlignment="Center"
                     Visibility="{PluginSettings Plugin=PlayState,
                                                 Path=IsControlVisible,
