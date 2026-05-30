@@ -976,6 +976,7 @@
                             Margin="10,5,10,5"
                             VerticalAlignment="Center"
                             DataContext="{PluginSettings Plugin=PlayniteAchievements}">
+
                             <Grid.Resources>
                               <LinearGradientBrush x:Key="PlatinumBrush" StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Offset="0" Color="#A020F0" />
@@ -997,354 +998,255 @@
                                 <GradientStop Offset="0" Color="#CD7F32" />
                                 <GradientStop Offset="1" Color="#8B4513" />
                               </LinearGradientBrush>
-                              <Style x:Key="AchievementProgressBarStyle" TargetType="ProgressBar">
-                                <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                <Setter Property="Template">
-                                  <Setter.Value>
-                                    <ControlTemplate TargetType="ProgressBar">
-                                      <Border BorderThickness="0" CornerRadius="3">
-                                        <Grid>
-                                          <Rectangle
-                                            Fill="{TemplateBinding Background}"
-                                            RadiusX="3"
-                                            RadiusY="3" />
-                                          <Rectangle
-                                            x:Name="PART_Track"
-                                            Fill="Transparent"
-                                            RadiusX="3"
-                                            RadiusY="3" />
-                                          <Decorator
-                                            x:Name="PART_Indicator"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Stretch">
-                                            <Rectangle
-                                              Fill="{TemplateBinding Foreground}"
-                                              RadiusX="3"
-                                              RadiusY="3" />
-                                          </Decorator>
-                                        </Grid>
-                                      </Border>
-                                    </ControlTemplate>
-                                  </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="100">
-                                    <Setter Property="Foreground" Value="{StaticResource PlatinumBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="99">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="98">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="97">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="96">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="95">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="94">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="93">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="92">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="91">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="90">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="89">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="88">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="87">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="86">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="85">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="84">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="83">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="82">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="81">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="80">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="79">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="78">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="77">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="76">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="75">
-                                    <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="74">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="73">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="72">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="71">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="70">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="69">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="68">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="67">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="66">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="65">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="64">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="63">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="62">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="61">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="60">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="59">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="58">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="57">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="56">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="55">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="54">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="53">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="52">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="51">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="50">
-                                    <Setter Property="Foreground" Value="{StaticResource SilverBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="49">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="48">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="47">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="46">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="45">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="44">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="43">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="42">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="41">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="40">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="39">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="38">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="37">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="36">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="35">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="34">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="33">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="32">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="31">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="30">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="29">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="28">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="27">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="26">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="25">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="24">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="23">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="22">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="21">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="20">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="19">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="18">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="17">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="16">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="15">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="14">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="13">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="12">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="11">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="10">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="9">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="8">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="7">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="6">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="5">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="4">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="3">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="2">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                  <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="1">
-                                    <Setter Property="Foreground" Value="{StaticResource BronzeBrush}" />
-                                  </DataTrigger>
-                                </Style.Triggers>
-                              </Style>
                             </Grid.Resources>
-                            <TextBlock
-                              x:Name="PlayniteAchievements_PercentInt"
-                              Text="{Binding Percent, FallbackValue=0, StringFormat={}{0:0}}"
-                              Visibility="Collapsed" />
+
                             <ProgressBar
                               Height="28"
                               Margin="0"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Center"
                               Background="#37393e"
-                              FontSize="10"
+                              Foreground="{StaticResource BronzeBrush}"
                               Maximum="{Binding Path=Total, FallbackValue=0}"
-                              Style="{StaticResource AchievementProgressBarStyle}"
-                              Value="{Binding Path=Unlocked, FallbackValue=0}" />
+                              Value="{Binding Path=Unlocked, FallbackValue=0}">
+                              <ProgressBar.Template>
+                                <ControlTemplate TargetType="ProgressBar">
+                                  <Border BorderThickness="0" CornerRadius="3">
+                                    <Grid>
+                                      <TextBlock
+                                        x:Name="PercentStringHelper"
+                                        Text="{Binding Percent, FallbackValue=0, StringFormat={}{0:0}}"
+                                        Visibility="Collapsed" />
+
+                                      <Rectangle
+                                        Fill="{TemplateBinding Background}"
+                                        RadiusX="3"
+                                        RadiusY="3" />
+                                      <Rectangle
+                                        x:Name="PART_Track"
+                                        Fill="Transparent"
+                                        RadiusX="3"
+                                        RadiusY="3" />
+
+                                      <Decorator
+                                        x:Name="PART_Indicator"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Stretch">
+                                        <Rectangle
+                                          x:Name="IndicatorRect"
+                                          Fill="{TemplateBinding Foreground}"
+                                          RadiusX="3"
+                                          RadiusY="3" />
+                                      </Decorator>
+
+                                      <Border
+                                        x:Name="FlareBorder"
+                                        BorderThickness="2"
+                                        CornerRadius="3"
+                                        Opacity="0.85"
+                                        Visibility="Collapsed">
+                                        <Border.Effect>
+                                          <DropShadowEffect
+                                            BlurRadius="4"
+                                            Opacity="0.4"
+                                            ShadowDepth="0"
+                                            Color="#E59D2E" />
+                                        </Border.Effect>
+                                        <Border.BorderBrush>
+                                          <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <LinearGradientBrush.RelativeTransform>
+                                              <RotateTransform x:Name="FlareTransform" Angle="0" CenterX="0.5" CenterY="0.5" />
+                                            </LinearGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="0.0" Color="#00C5A000" />
+                                            <GradientStop Offset="0.3" Color="#80FFD700" />
+                                            <GradientStop Offset="0.5" Color="#CCFFFFFF" />
+                                            <GradientStop Offset="0.7" Color="#80FFD700" />
+                                            <GradientStop Offset="1.0" Color="#00C5A000" />
+                                          </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                      </Border>
+                                    </Grid>
+                                  </Border>
+
+                                  <ControlTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="100">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                      <Setter TargetName="FlareBorder" Property="Visibility" Value="Visible" />
+
+                                      <DataTrigger.EnterActions>
+                                        <BeginStoryboard Name="SpinFlare">
+                                          <Storyboard>
+                                            <DoubleAnimation
+                                              RepeatBehavior="Forever"
+                                              Storyboard.TargetName="FlareTransform"
+                                              Storyboard.TargetProperty="Angle"
+                                              From="0"
+                                              To="360"
+                                              Duration="0:0:3.5" />
+                                          </Storyboard>
+                                        </BeginStoryboard>
+                                      </DataTrigger.EnterActions>
+
+                                      <DataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="SpinFlare" />
+                                      </DataTrigger.ExitActions>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="99">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="98">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="97">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="96">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="95">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="94">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="93">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="92">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="91">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="90">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="89">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="88">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="87">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="86">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="85">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="84">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="83">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="82">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="81">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="80">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="79">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="78">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="77">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="76">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="75">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource GoldBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="74">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="73">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="72">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="71">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="70">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="69">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="68">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="67">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="66">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="65">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="64">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="63">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="62">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="61">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="60">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="59">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="58">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="57">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="56">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="55">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="54">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="53">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="52">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="51">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PercentStringHelper}" Value="50">
+                                      <Setter TargetName="IndicatorRect" Property="Fill" Value="{StaticResource SilverBrush}" />
+                                    </DataTrigger>
+                                    <!--  Default is bronze  -->
+                                  </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                              </ProgressBar.Template>
+                            </ProgressBar>
+
                             <TextBlock
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
