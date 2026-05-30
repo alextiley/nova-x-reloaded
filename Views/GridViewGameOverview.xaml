@@ -180,23 +180,35 @@
                   <Button
                     Name="PART_ButtonPlayAction"
                     Grid.Column="0"
-                    Margin="0,0,10,0"
+                    Margin="0,0,3,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource PlayButtonViews}" />
                   <Button
                     Name="PART_ButtonContextAction"
                     Grid.Column="1"
-                    Margin="0,0,10,0"
+                    Margin="0,0,3,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource ContextButtonViews}" />
                   <Button
                     Name="PART_ButtonMoreActions"
                     Grid.Column="2"
-                    MinWidth="20"
+                    Width="25"
+                    MinWidth="0"
                     Margin="0,0,10,0"
-                    Style="{DynamicResource MoreActionButtonViews}">
+                    Padding="0">
+
+                    <Button.Style>
+                      <Style BasedOn="{StaticResource MoreActionButtonViews}" TargetType="Button">
+                        <Setter Property="Tag" Value="GreenGradient" />
+                        <Style.Triggers>
+                          <DataTrigger Binding="{Binding Visibility, ElementName=PART_ButtonContextAction}" Value="Visible">
+                            <Setter Property="Tag" Value="BlueGradient" />
+                          </DataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Button.Style>
 
                     <Button.Content>
                       <Viewbox

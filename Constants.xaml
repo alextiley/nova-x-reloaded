@@ -68,7 +68,7 @@
   <Thickness x:Key="PopupBorderThickness">1</Thickness>
   <Thickness x:Key="ControlBorderThickness">0</Thickness>
   <sys:Double x:Key="EllipseBorderThickness">1</sys:Double>
-  <sys:Double x:Key="ControlCornerRadiusValue">3</sys:Double>
+  <sys:Double x:Key="ControlCornerRadiusValue">2</sys:Double>
   <CornerRadius
     x:Key="ControlCornerRadius"
     BottomLeft="{StaticResource ControlCornerRadiusValue}"

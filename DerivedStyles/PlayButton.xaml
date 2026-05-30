@@ -276,11 +276,12 @@
           <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="INSTALL">
               <Setter TargetName="Icon_INSTALL" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DisplayText" Property="Text" Value="INSTALL" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="INSTALLING">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
-              <Setter TargetName="DisplayText" Property="Text" Value="DOWNLOADING" />
+              <Setter TargetName="DisplayText" Property="Text" Value="INSTALLING" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="UNINSTALLING">
@@ -290,12 +291,12 @@
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="LAUNCHING">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
-              <Setter TargetName="DisplayText" Property="Text" Value="CANCEL" />
+              <Setter TargetName="DisplayText" Property="Text" Value="LAUNCHING" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="RUNNING">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
-              <Setter TargetName="DisplayText" Property="Text" Value="STOP" />
+              <Setter TargetName="DisplayText" Property="Text" Value="RUNNING" />
             </DataTrigger>
 
             <Trigger Property="IsEnabled" Value="False">
@@ -340,6 +341,40 @@
   </Style>
 
   <Style x:Key="MoreActionButtonViews" TargetType="{x:Type Button}">
+    <Style.Resources>
+      <LinearGradientBrush x:Key="SteamGreenGradient" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <ScaleTransform CenterX="0.25" CenterY="0" ScaleX="3.3" ScaleY="1" />
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#19b14e" />
+        <GradientStop Offset="0.6" Color="#19b14e" />
+      </LinearGradientBrush>
+
+      <LinearGradientBrush x:Key="SteamGreenHoverGradient" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <ScaleTransform CenterX="0" CenterY="0" ScaleX="3.3" ScaleY="1" />
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#70d61d" />
+        <GradientStop Offset="0.6" Color="#01a75b" />
+      </LinearGradientBrush>
+
+      <LinearGradientBrush x:Key="SteamInstallDefault" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <ScaleTransform CenterX="0.25" CenterY="0" ScaleX="3.3" ScaleY="1" />
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#47bfff" />
+        <GradientStop Offset="0.6" Color="#1a44c2" />
+      </LinearGradientBrush>
+
+      <LinearGradientBrush x:Key="SteamInstallHover" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+          <ScaleTransform CenterX="0" CenterY="0" ScaleX="3.3" ScaleY="1" />
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.0" Color="#47bfff" />
+        <GradientStop Offset="0.6" Color="#1a44c2" />
+      </LinearGradientBrush>
+    </Style.Resources>
+
     <Setter Property="Background" Value="#303030" />
     <Setter Property="Foreground" Value="White" />
     <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}" />
@@ -350,25 +385,133 @@
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="MinHeight" Value="54" />
     <Setter Property="MinWidth" Value="54" />
+
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Button}">
           <Grid x:Name="Grid">
+
             <Border
               x:Name="DefaultBorder"
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}" />
+
+            <Border
+              x:Name="HoverBorder"
+              Background="#ffffff"
               CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
-              Opacity="1" />
+              IsHitTestVisible="False"
+              Opacity="0"
+              Visibility="Visible" />
+
+            <Border
+              x:Name="GreenHoverBorder"
+              Background="{StaticResource SteamGreenHoverGradient}"
+              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
+              IsHitTestVisible="False"
+              Opacity="0"
+              Visibility="Collapsed" />
+
+            <Border
+              x:Name="BlueHoverBorder"
+              Background="{StaticResource SteamInstallHover}"
+              CornerRadius="{DynamicResource ControlCornerRadiusViewPlayButtons}"
+              IsHitTestVisible="False"
+              Opacity="0"
+              Visibility="Collapsed" />
+
             <ContentPresenter
               Margin="{TemplateBinding Padding}"
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
               RecognizesAccessKey="True" />
           </Grid>
+
           <ControlTemplate.Triggers>
-            <Trigger Property="IsEnabled" Value="True" />
+
+            <Trigger Property="Tag" Value="GreenGradient">
+              <Setter TargetName="DefaultBorder" Property="Background" Value="{StaticResource SteamGreenGradient}" />
+              <Setter TargetName="HoverBorder" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="GreenHoverBorder" Property="Visibility" Value="Visible" />
+            </Trigger>
+
+            <Trigger Property="Tag" Value="BlueGradient">
+              <Setter TargetName="DefaultBorder" Property="Background" Value="{StaticResource SteamInstallDefault}" />
+              <Setter TargetName="HoverBorder" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="BlueHoverBorder" Property="Visibility" Value="Visible" />
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+              <Trigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="HoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0.1"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation
+                      Storyboard.TargetName="GreenHoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="1"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation
+                      Storyboard.TargetName="BlueHoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="1"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.EnterActions>
+              <Trigger.ExitActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation
+                      Storyboard.TargetName="HoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation
+                      Storyboard.TargetName="GreenHoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <DoubleAnimation
+                      Storyboard.TargetName="BlueHoverBorder"
+                      Storyboard.TargetProperty="Opacity"
+                      To="0"
+                      Duration="0:0:0.2">
+                      <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.ExitActions>
+            </Trigger>
+
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="DefaultBorder" Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" />
               <Setter TargetName="Grid" Property="Opacity" Value="0.5" />
@@ -377,30 +520,6 @@
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Style.Triggers>
-      <Trigger Property="IsMouseOver" Value="true">
-        <Trigger.EnterActions>
-          <BeginStoryboard>
-            <Storyboard TargetProperty="(Background).(SolidColorBrush.Color)">
-              <ColorAnimation
-                FillBehavior="HoldEnd"
-                To="#454545"
-                Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.EnterActions>
-        <Trigger.ExitActions>
-          <BeginStoryboard>
-            <Storyboard TargetProperty="(Background).(SolidColorBrush.Color)">
-              <ColorAnimation
-                FillBehavior="HoldEnd"
-                To="#303030"
-                Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.ExitActions>
-      </Trigger>
-    </Style.Triggers>
   </Style>
 
   <Style
