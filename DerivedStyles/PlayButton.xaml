@@ -360,10 +360,10 @@
 
       <LinearGradientBrush x:Key="SteamInstallDefault" StartPoint="0,0.5" EndPoint="1,0.5">
         <LinearGradientBrush.RelativeTransform>
-          <ScaleTransform CenterX="0.25" CenterY="0" ScaleX="3.3" ScaleY="1" />
+          <ScaleTransform CenterX="0" CenterY="0" ScaleX="3.3" ScaleY="1" />
         </LinearGradientBrush.RelativeTransform>
-        <GradientStop Offset="0.0" Color="#47bfff" />
-        <GradientStop Offset="0.6" Color="#1a44c2" />
+        <GradientStop Offset="0.0" Color="#235ecf" />
+        <GradientStop Offset="0.6" Color="#235ecf" />
       </LinearGradientBrush>
 
       <LinearGradientBrush x:Key="SteamInstallHover" StartPoint="0,0.5" EndPoint="1,0.5">
