@@ -104,13 +104,18 @@
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
               Orientation="Horizontal">
+
               <Path
                 Width="13"
                 Height="15"
                 Margin="0,0,10,0"
                 Data="M65.321,33.521c-11.274-6.615-20.342-1.471-20.342,11.52V210.96c0,12.989,9.068,18.135,20.342,11.521l137.244-82.348 c11.274-6.618,11.274-17.646,0-24.509L65.321,33.521z"
-                Fill="#c1ffcb"
-                Stretch="Uniform" />
+                Stretch="Uniform">
+                <Path.Fill>
+                  <SolidColorBrush x:Name="PlayIconBrush" Color="#c1ffcb" />
+                </Path.Fill>
+              </Path>
+
               <TextBlock
                 VerticalAlignment="Center"
                 FontFamily="{TemplateBinding FontFamily}"
@@ -140,9 +145,20 @@
                         <QuadraticEase EasingMode="EaseOut" />
                       </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
+
+                    <ColorAnimation
+                      Storyboard.TargetName="PlayIconBrush"
+                      Storyboard.TargetProperty="Color"
+                      To="White"
+                      Duration="0:0:0.2">
+                      <ColorAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </ColorAnimation.EasingFunction>
+                    </ColorAnimation>
                   </Storyboard>
                 </BeginStoryboard>
               </Trigger.EnterActions>
+
               <Trigger.ExitActions>
                 <BeginStoryboard>
                   <Storyboard>
@@ -155,6 +171,16 @@
                         <QuadraticEase EasingMode="EaseOut" />
                       </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
+
+                    <ColorAnimation
+                      Storyboard.TargetName="PlayIconBrush"
+                      Storyboard.TargetProperty="Color"
+                      To="#c1ffcb"
+                      Duration="0:0:0.2">
+                      <ColorAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </ColorAnimation.EasingFunction>
+                    </ColorAnimation>
                   </Storyboard>
                 </BeginStoryboard>
               </Trigger.ExitActions>
@@ -226,12 +252,17 @@
                 Width="20"
                 Height="20"
                 Margin="0,0,10,0">
+
                 <Path
                   x:Name="Icon_INSTALL"
                   Data="M 29,23 H 29 V 27 H 7 V 23 H 2 V 32 H 34 V 23 H 29 Z M 20,14.1716 L 24.5858,9.58578 L 27.4142,12.4142 L 18,21.8284 L 8.58582,12.4142 L 11.4142,9.58578 L 16,14.1715 V 2 H 20 V 14.1716 Z"
-                  Fill="#cbeeff"
                   Stretch="Uniform"
-                  Visibility="Collapsed" />
+                  Visibility="Collapsed">
+                  <Path.Fill>
+                    <SolidColorBrush x:Name="InstallIconBrush" Color="#cbeeff" />
+                  </Path.Fill>
+                </Path>
+
                 <Canvas
                   x:Name="Icon_CANCEL"
                   Width="16"
@@ -317,9 +348,20 @@
                         <QuadraticEase EasingMode="EaseOut" />
                       </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
+
+                    <ColorAnimation
+                      Storyboard.TargetName="InstallIconBrush"
+                      Storyboard.TargetProperty="Color"
+                      To="White"
+                      Duration="0:0:0.2">
+                      <ColorAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </ColorAnimation.EasingFunction>
+                    </ColorAnimation>
                   </Storyboard>
                 </BeginStoryboard>
               </Trigger.EnterActions>
+
               <Trigger.ExitActions>
                 <BeginStoryboard>
                   <Storyboard>
@@ -332,6 +374,16 @@
                         <QuadraticEase EasingMode="EaseOut" />
                       </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
+
+                    <ColorAnimation
+                      Storyboard.TargetName="InstallIconBrush"
+                      Storyboard.TargetProperty="Color"
+                      To="#cbeeff"
+                      Duration="0:0:0.2">
+                      <ColorAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut" />
+                      </ColorAnimation.EasingFunction>
+                    </ColorAnimation>
                   </Storyboard>
                 </BeginStoryboard>
               </Trigger.ExitActions>
