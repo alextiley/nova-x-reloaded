@@ -196,6 +196,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
 
                   <Button
@@ -269,9 +270,25 @@
                     </Button.Content>
                   </Button>
 
+                  <!-- <Button
+                    x:Name="OpenAchievementOptionsButton"
+                    Grid.Column="5"
+                    Width="32"
+                    Height="32"
+                    MinWidth="32"
+                    MinHeight="32"
+                    Margin="10,0,0,0"
+                    Padding="0"
+                    Focusable="False"
+                    Style="{DynamicResource MoreActionButtonViews}">
+                    <Button.Content>
+                      A
+                    </Button.Content>
+                  </Button>-->
+
                   <ToggleButton
                     Name="GameFavoriteToggleButton"
-                    Grid.Column="5"
+                    Grid.Column="6"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -289,7 +306,7 @@
 
                   <ContentControl
                     x:Name="PlayState_GameStateSwitchControl"
-                    Grid.Column="6"
+                    Grid.Column="7"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -966,13 +983,16 @@
                                 <GradientStop Offset="1" Color="#4B0082" />
                               </LinearGradientBrush>
                               <LinearGradientBrush x:Key="GoldBrush" StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Offset="0" Color="#B8860B" />
-                                <GradientStop Offset="0.5" Color="#AB8407" />
-                                <GradientStop Offset="1" Color="#DCB306" />
+                                <GradientStop Offset="0.0" Color="#FFD700" />
+                                <GradientStop Offset="0.3" Color="#C5A000" />
+                                <GradientStop Offset="0.7" Color="#8B6508" />
+                                <GradientStop Offset="1.0" Color="#664A00" />
                               </LinearGradientBrush>
+
                               <LinearGradientBrush x:Key="SilverBrush" StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Offset="0" Color="#C0C0C0" />
-                                <GradientStop Offset="1" Color="#A9A9A9" />
+                                <GradientStop Offset="0.0" Color="#A8A9AD" />
+                                <GradientStop Offset="0.5" Color="#71797E" />
+                                <GradientStop Offset="1.0" Color="#4A4E52" />
                               </LinearGradientBrush>
                               <LinearGradientBrush x:Key="BronzeBrush" StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Offset="0" Color="#CD7F32" />
