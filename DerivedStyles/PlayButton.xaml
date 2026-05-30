@@ -451,12 +451,12 @@
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
-              CornerRadius="0,2,2,0" />
+              CornerRadius="2" />
 
             <Border
               x:Name="HoverBorder"
               Background="#ffffff"
-              CornerRadius="0,2,2,0"
+              CornerRadius="2"
               IsHitTestVisible="False"
               Opacity="0"
               Visibility="Visible" />
@@ -488,13 +488,17 @@
 
             <Trigger Property="Tag" Value="GreenGradient">
               <Setter TargetName="DefaultBorder" Property="Background" Value="{StaticResource SteamGreenGradient}" />
+              <Setter TargetName="DefaultBorder" Property="CornerRadius" Value="0,2,2,0" />
               <Setter TargetName="HoverBorder" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="HoverBorder" Property="CornerRadius" Value="0,2,2,0" />
               <Setter TargetName="GreenHoverBorder" Property="Visibility" Value="Visible" />
             </Trigger>
 
             <Trigger Property="Tag" Value="BlueGradient">
               <Setter TargetName="DefaultBorder" Property="Background" Value="{StaticResource SteamInstallDefault}" />
+              <Setter TargetName="DefaultBorder" Property="CornerRadius" Value="0,2,2,0" />
               <Setter TargetName="HoverBorder" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="HoverBorder" Property="CornerRadius" Value="0,2,2,0" />
               <Setter TargetName="BlueHoverBorder" Property="Visibility" Value="Visible" />
             </Trigger>
 

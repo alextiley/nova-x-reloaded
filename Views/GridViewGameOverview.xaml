@@ -977,7 +977,7 @@
                             VerticalAlignment="Center"
                             DataContext="{PluginSettings Plugin=PlayniteAchievements}">
                             <Grid.Resources>
-                              <LinearGradientBrush x:Key="HotPinkBrush" StartPoint="0,0" EndPoint="1,0">
+                              <LinearGradientBrush x:Key="PlatinumBrush" StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Offset="0" Color="#A020F0" />
                                 <GradientStop Offset="0.5" Color="#8A60D4" />
                                 <GradientStop Offset="1" Color="#4B0082" />
@@ -988,7 +988,6 @@
                                 <GradientStop Offset="0.7" Color="#8B6508" />
                                 <GradientStop Offset="1.0" Color="#664A00" />
                               </LinearGradientBrush>
-
                               <LinearGradientBrush x:Key="SilverBrush" StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Offset="0.0" Color="#A8A9AD" />
                                 <GradientStop Offset="0.5" Color="#71797E" />
@@ -1030,7 +1029,7 @@
                                 </Setter>
                                 <Style.Triggers>
                                   <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="100">
-                                    <Setter Property="Foreground" Value="{StaticResource HotPinkBrush}" />
+                                    <Setter Property="Foreground" Value="{StaticResource PlatinumBrush}" />
                                   </DataTrigger>
                                   <DataTrigger Binding="{Binding Text, ElementName=PlayniteAchievements_PercentInt}" Value="99">
                                     <Setter Property="Foreground" Value="{StaticResource GoldBrush}" />
