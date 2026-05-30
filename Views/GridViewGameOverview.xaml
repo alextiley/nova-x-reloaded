@@ -212,8 +212,48 @@
                     Grid.Column="1"
                     Margin="0,0,3,0"
                     HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                    <Button.Style>
+                      <Style BasedOn="{StaticResource ContextButtonViews}" TargetType="Button">
+                        <Style.Triggers>
+                          <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                              <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=IsGameRunning}" Value="True" />
+                              <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                          </MultiDataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Button.Style>
+                  </Button>
+
+                  <Button
+                    Grid.Column="1"
+                    Margin="0,0,3,0"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Style="{DynamicResource ContextButtonViews}" />
+                    Command="{PluginSettings Plugin=NowPlaying,
+                                             Path=CloseGame}"
+                    Content="STOP">
+                    <Button.Style>
+                      <Style BasedOn="{StaticResource ContextButtonViews}" TargetType="Button">
+                        <Setter Property="Visibility" Value="Collapsed" />
+
+                        <Style.Triggers>
+                          <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                              <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=IsGameRunning}" Value="True" />
+                              <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible" />
+                          </MultiDataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Button.Style>
+                  </Button>
 
                   <Button
                     Name="PART_ButtonMoreActions"
@@ -270,25 +310,9 @@
                     </Button.Content>
                   </Button>
 
-                  <!-- <Button
-                    x:Name="OpenAchievementOptionsButton"
-                    Grid.Column="5"
-                    Width="32"
-                    Height="32"
-                    MinWidth="32"
-                    MinHeight="32"
-                    Margin="10,0,0,0"
-                    Padding="0"
-                    Focusable="False"
-                    Style="{DynamicResource MoreActionButtonViews}">
-                    <Button.Content>
-                      A
-                    </Button.Content>
-                  </Button>-->
-
                   <ToggleButton
                     Name="GameFavoriteToggleButton"
-                    Grid.Column="6"
+                    Grid.Column="5"
                     Width="32"
                     Height="32"
                     MinWidth="32"

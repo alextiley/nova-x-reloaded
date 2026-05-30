@@ -332,6 +332,10 @@
               <Setter TargetName="DisplayText" Property="Text" Value="RUNNING" />
             </DataTrigger>
 
+            <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="STOP">
+              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Grid" Property="Opacity" Value="0.5" />
             </Trigger>
