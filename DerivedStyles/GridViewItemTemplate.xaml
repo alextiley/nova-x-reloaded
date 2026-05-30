@@ -141,7 +141,7 @@
                     Foreground="{DynamicResource TextBrush}"
                     Opacity="0.90"
                     Tag="{DynamicResource GridViewLibraryGameShowFavorite}"
-                    Text="&#xE113;">
+                    Text="&#xEB52;">
                     <TextBlock.Style>
                       <Style TargetType="TextBlock">
                         <Setter Property="Visibility" Value="Collapsed" />

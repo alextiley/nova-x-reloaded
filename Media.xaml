@@ -1,53 +1,206 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:popt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:popt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
-    <BitmapImage x:Key="TrayIcon" UriSource="{ThemeFile 'Images/applogo.ico'}" RenderOptions.BitmapScalingMode="Fant" popt:Freeze="True"/>
-    <BitmapImage x:Key="TrayIconWhite" UriSource="{ThemeFile 'Images/applogo_black.ico'}" RenderOptions.BitmapScalingMode="Fant" popt:Freeze="True"/>
-    <BitmapImage x:Key="TrayIconBlack" UriSource="{ThemeFile 'Images/applogo_white.ico'}" RenderOptions.BitmapScalingMode="Fant" popt:Freeze="True"/>
-    <TextBlock x:Key="FullscreenModeIcon" Text="&#xea48;" FontFamily="{DynamicResource FontIcoFont}" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
+  <BitmapImage
+    x:Key="TrayIcon"
+    popt:Freeze="True"
+    RenderOptions.BitmapScalingMode="Fant"
+    UriSource="{ThemeFile 'Images/applogo.ico'}" />
+  <BitmapImage
+    x:Key="TrayIconWhite"
+    popt:Freeze="True"
+    RenderOptions.BitmapScalingMode="Fant"
+    UriSource="{ThemeFile 'Images/applogo_black.ico'}" />
+  <BitmapImage
+    x:Key="TrayIconBlack"
+    popt:Freeze="True"
+    RenderOptions.BitmapScalingMode="Fant"
+    UriSource="{ThemeFile 'Images/applogo_white.ico'}" />
+  <TextBlock
+    x:Key="FullscreenModeIcon"
+    FontFamily="{DynamicResource FontIcoFont}"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xea48;" />
 
-    <TextBlock x:Key="AddGameIcon" Text="&#xF8AA;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="UpdateDbIcon" Text="&#xE777;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="AboutPlayniteIcon" Text="&#xE946;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="ExitIcon" Text="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Foreground="OrangeRed" FontWeight="Light"/>
-    <TextBlock x:Key="SettingsIcon" Text="&#xE115;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="AddonsIcon" Text="&#xE1FD;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="PlayIcon" Text="&#xE102;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="InstallIcon" Text="&#xE118;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="LinksIcon" Text="&#xE167;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="OpenFolderIcon" Text="&#xE838;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="InstallSizeIcon" Text="&#xEDA2;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="DesktopShortcutIcon" Text="&#xE8F7;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="AddFavoritesIcon" Text="&#xE113;" FontFamily="Segoe MDL2 Assets" Foreground="Yellow" FontWeight="Light"/>
-    <TextBlock x:Key="RemoveFavoritesIcon" Text="&#xE195;" FontFamily="Segoe MDL2 Assets" Foreground="Yellow" FontWeight="Light"/>
-    <TextBlock x:Key="HideIcon" Text="&#xE7B3;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="UnHideIcon" Text="&#xE7B3;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="EditGameIcon" Text="&#xE104;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="RemoveGameIcon" Text="&#xE107;" FontFamily="Segoe MDL2 Assets" Foreground="OrangeRed" FontWeight="Light"/>
-    <TextBlock x:Key="DiceIcon" Text="&#xef03;" FontFamily="{DynamicResource FontIcoFont}" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="ManualIcon" Text="&#xE82D;" FontFamily="Segoe MDL2 Assets" Foreground="{DynamicResource TextBrush}" FontWeight="Light"/>
-    <TextBlock x:Key="BackupIcon" Text="&#xE105;" FontFamily="Segoe MDL2 Assets" />
-    <TextBlock x:Key="RestoreBackupIcon" Text="&#xE159;" FontFamily="Segoe MDL2 Assets" />
+  <TextBlock
+    x:Key="AddGameIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xF8AA;" />
+  <TextBlock
+    x:Key="UpdateDbIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE777;" />
+  <TextBlock
+    x:Key="AboutPlayniteIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE946;" />
+  <TextBlock
+    x:Key="ExitIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="OrangeRed"
+    Text="&#xE8BB;" />
+  <TextBlock
+    x:Key="SettingsIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE115;" />
+  <TextBlock
+    x:Key="AddonsIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE1FD;" />
+  <TextBlock
+    x:Key="PlayIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE102;" />
+  <TextBlock
+    x:Key="InstallIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE118;" />
+  <TextBlock
+    x:Key="LinksIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE167;" />
+  <TextBlock
+    x:Key="OpenFolderIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE838;" />
+  <TextBlock
+    x:Key="InstallSizeIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xEDA2;" />
+  <TextBlock
+    x:Key="DesktopShortcutIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE8F7;" />
+  <TextBlock
+    x:Key="AddFavoritesIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="Yellow"
+    Text="&#xEB52;" />
+  <TextBlock
+    x:Key="RemoveFavoritesIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="Yellow"
+    Text="&#xEB51;" />
+  <TextBlock
+    x:Key="HideIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE7B3;" />
+  <TextBlock
+    x:Key="UnHideIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE7B3;" />
+  <TextBlock
+    x:Key="EditGameIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE104;" />
+  <TextBlock
+    x:Key="RemoveGameIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="OrangeRed"
+    Text="&#xE107;" />
+  <TextBlock
+    x:Key="DiceIcon"
+    FontFamily="{DynamicResource FontIcoFont}"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xef03;" />
+  <TextBlock
+    x:Key="ManualIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="Light"
+    Foreground="{DynamicResource TextBrush}"
+    Text="&#xE82D;" />
+  <TextBlock
+    x:Key="BackupIcon"
+    FontFamily="Segoe MDL2 Assets"
+    Text="&#xE105;" />
+  <TextBlock
+    x:Key="RestoreBackupIcon"
+    FontFamily="Segoe MDL2 Assets"
+    Text="&#xE159;" />
 
-    <TextBlock x:Key="ClearTextIcon" Text="&#xE750;" FontFamily="Segoe MDL2 Assets"/>
-    <TextBlock x:Key="SearchTextIcon" Text="&#xE721;" FontFamily="Segoe MDL2 Assets" />
+  <TextBlock
+    x:Key="ClearTextIcon"
+    FontFamily="Segoe MDL2 Assets"
+    Text="&#xE750;" />
+  <TextBlock
+    x:Key="SearchTextIcon"
+    FontFamily="Segoe MDL2 Assets"
+    Text="&#xE721;" />
 
-    <TextBlock x:Key="SidebarLibraryIcon" Text="&#xE1D3;" FontFamily="Segoe MDL2 Assets"  FontWeight="ExtraLight"/>
-    <TextBlock x:Key="SidebarStatisticsIcon" Text="&#xEB05;" FontFamily="Segoe MDL2 Assets"  FontWeight="ExtraLight"/>
+  <TextBlock
+    x:Key="SidebarLibraryIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="ExtraLight"
+    Text="&#xE1D3;" />
+  <TextBlock
+    x:Key="SidebarStatisticsIcon"
+    FontFamily="Segoe MDL2 Assets"
+    FontWeight="ExtraLight"
+    Text="&#xEB05;" />
 
-    <DataTemplate x:Key="ClearTextIconTemplate">
-        <TextBlock Text="&#xE750;" FontFamily="Segoe MDL2 Assets" />
-    </DataTemplate>
+  <DataTemplate x:Key="ClearTextIconTemplate">
+    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE750;" />
+  </DataTemplate>
 
-    <DataTemplate x:Key="SearchTextIconTemplate">
-        <TextBlock Text="&#xE721;" FontFamily="Segoe MDL2 Assets" />
-    </DataTemplate>
+  <DataTemplate x:Key="SearchTextIconTemplate">
+    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE721;" />
+  </DataTemplate>
 
-    <BitmapImage x:Key="PlayniteLogo" UriSource="{ThemeFile 'Images/applogo.png'}" popt:Freeze="True" />
-    <BitmapImage x:Key="DefaultGameIcon" UriSource="{ThemeFile 'Images/applogo_dark.png'}" popt:Freeze="True" />
-    <BitmapImage x:Key="DefaultGameCover" UriSource="{ThemeFile 'Images/custom_cover_background.png'}" popt:Freeze="True" />
+  <BitmapImage
+    x:Key="PlayniteLogo"
+    popt:Freeze="True"
+    UriSource="{ThemeFile 'Images/applogo.png'}" />
+  <BitmapImage
+    x:Key="DefaultGameIcon"
+    popt:Freeze="True"
+    UriSource="{ThemeFile 'Images/applogo_dark.png'}" />
+  <BitmapImage
+    x:Key="DefaultGameCover"
+    popt:Freeze="True"
+    UriSource="{ThemeFile 'Images/custom_cover_background.png'}" />
 
-    <BitmapImage x:Key="PowerShellIcon" UriSource="{ThemeFile 'Images/powershell.ico'}" popt:Freeze="True" />
-    <BitmapImage x:Key="CsharpIcon" UriSource="{ThemeFile 'Images/csharp.ico'}" popt:Freeze="True" />
+  <BitmapImage
+    x:Key="PowerShellIcon"
+    popt:Freeze="True"
+    UriSource="{ThemeFile 'Images/powershell.ico'}" />
+  <BitmapImage
+    x:Key="CsharpIcon"
+    popt:Freeze="True"
+    UriSource="{ThemeFile 'Images/csharp.ico'}" />
 </ResourceDictionary>
