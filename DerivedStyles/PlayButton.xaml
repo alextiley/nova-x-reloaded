@@ -257,31 +257,45 @@
               </Grid>
 
               <TextBlock
-                x:Name="ButtonText"
+                x:Name="OriginalText"
+                Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Content, Mode=OneWay, Converter={StaticResource StringToUpperCaseConverter}}"
+                Visibility="Collapsed" />
+
+              <TextBlock
+                x:Name="DisplayText"
                 VerticalAlignment="Center"
                 FontFamily="{TemplateBinding FontFamily}"
                 FontSize="{TemplateBinding FontSize}"
                 FontWeight="{TemplateBinding FontWeight}"
                 Foreground="{TemplateBinding Foreground}"
-                Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Content, Mode=OneWay, Converter={StaticResource StringToUpperCaseConverter}}" />
+                Text="{Binding ElementName=OriginalText, Path=Text}" />
+
             </StackPanel>
           </Grid>
 
           <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="INSTALL">
+            <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="INSTALL">
               <Setter TargetName="Icon_INSTALL" Property="Visibility" Value="Visible" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="INSTALLING">
+
+            <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="INSTALLING">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DisplayText" Property="Text" Value="DOWNLOADING" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="UNINSTALLING">
+
+            <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="UNINSTALLING">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DisplayText" Property="Text" Value="REMOVING" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="LAUNCHING">
+
+            <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="LAUNCHING">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DisplayText" Property="Text" Value="CANCEL" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding ElementName=ButtonText, Path=Text}" Value="RUNNING">
+
+            <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="RUNNING">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DisplayText" Property="Text" Value="STOP" />
             </DataTrigger>
 
             <Trigger Property="IsEnabled" Value="False">
