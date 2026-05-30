@@ -15,15 +15,34 @@
             d:DataContext="{x:Static DesignMainViewModel.DesignSelectedGameDetailsIntance}"
             BorderBrush="{DynamicResource PanelSeparatorBrush}">
             <DockPanel Margin="{DynamicResource PanelTopPanelSeparator}">
-              <Button
-                Margin="0,0,15,5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Command="{MainViewModel CloseGameSideBarCommand}"
-                Content="&#xE8BB;"
-                DockPanel.Dock="Top"
-                FontFamily="Segoe MDL2 Assets"
-                Style="{DynamicResource SimpleButton}" />
+              <Grid Margin="0,0,15,5" DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ContentControl
+                  x:Name="DuplicateHider_SourceSelector"
+                  Grid.Column="0"
+                  Height="24"
+                  Margin="0,0,25,0"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center"
+                  RenderOptions.BitmapScalingMode="Fant"
+                  Visibility="{PluginSettings Plugin=DuplicateHider,
+                                              Path=EnableUiIntegration,
+                                              FallbackValue=Collapsed,
+                                              Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                <Button
+                  Grid.Column="1"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Top"
+                  Command="{MainViewModel CloseGameSideBarCommand}"
+                  Content="&#xE8BB;"
+                  FontFamily="Segoe MDL2 Assets"
+                  Style="{DynamicResource SimpleButton}" />
+              </Grid>
               <TextBlock
                 Margin="0,20,0,0"
                 HorizontalAlignment="Center"
@@ -162,18 +181,20 @@
 
 
                 <Grid
-                  Margin="0,0,0,10"
+                  Margin="0,0,30,10"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Top"
                   DockPanel.Dock="Top">
+
                   <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+
                     <ColumnDefinition Width="*" />
+
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
 
@@ -184,6 +205,7 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource PlayButtonViews}" />
+
                   <Button
                     Name="PART_ButtonContextAction"
                     Grid.Column="1"
@@ -191,6 +213,7 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource ContextButtonViews}" />
+
                   <Button
                     Name="PART_ButtonMoreActions"
                     Grid.Column="2"
@@ -198,7 +221,6 @@
                     MinWidth="0"
                     Margin="0,0,10,0"
                     Padding="0">
-
                     <Button.Style>
                       <Style BasedOn="{StaticResource MoreActionButtonViews}" TargetType="Button">
                         <Setter Property="Tag" Value="GreenGradient" />
@@ -209,7 +231,6 @@
                         </Style.Triggers>
                       </Style>
                     </Button.Style>
-
                     <Button.Content>
                       <Viewbox
                         Width="15"
@@ -226,9 +247,10 @@
                       </Viewbox>
                     </Button.Content>
                   </Button>
+
                   <Button
                     x:Name="PART_ButtonEditGame"
-                    Grid.Column="3"
+                    Grid.Column="4"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -237,7 +259,6 @@
                     Padding="0"
                     Focusable="False"
                     Style="{DynamicResource MoreActionButtonViews}">
-
                     <Button.Content>
                       <Viewbox Width="16" Height="16">
                         <Path
@@ -247,9 +268,10 @@
                       </Viewbox>
                     </Button.Content>
                   </Button>
+
                   <ToggleButton
                     Name="GameFavoriteToggleButton"
-                    Grid.Column="4"
+                    Grid.Column="5"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -267,7 +289,7 @@
 
                   <ContentControl
                     x:Name="PlayState_GameStateSwitchControl"
-                    Grid.Column="5"
+                    Grid.Column="6"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -279,20 +301,6 @@
                                                 Path=IsControlVisible,
                                                 FallbackValue=Collapsed,
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
-
-                  <ContentControl
-                    x:Name="DuplicateHider_SourceSelector"
-                    Grid.Column="7"
-                    Height="24"
-                    Margin="0,0,25,0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    RenderOptions.BitmapScalingMode="Fant"
-                    Visibility="{PluginSettings Plugin=DuplicateHider,
-                                                Path=EnableUiIntegration,
-                                                FallbackValue=Collapsed,
-                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
-
                 </Grid>
 
                 <ScrollViewer
