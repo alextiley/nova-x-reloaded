@@ -335,9 +335,69 @@
                     </Button.Content>
                   </Button>
 
+                  <ContentControl
+                    x:Name="PlayState_GameStateSwitchControl"
+                    Grid.Column="4"
+                    Width="32"
+                    Height="32"
+                    MinWidth="32"
+                    MinHeight="32"
+                    Margin="10,0,0,0"
+                    Padding="0"
+                    VerticalAlignment="Center"
+                    Visibility="{PluginSettings Plugin=PlayState,
+                                                Path=IsControlVisible,
+                                                FallbackValue=Collapsed,
+                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                  <Button
+                    x:Name="ButtonFocusGame"
+                    Grid.Column="5"
+                    Width="32"
+                    Height="32"
+                    MinWidth="32"
+                    MinHeight="32"
+                    Margin="10,0,0,0"
+                    Padding="0"
+                    Command="{PluginSettings Plugin=NowPlaying,
+                                             Path=ReturnToGame}"
+                    Focusable="False">
+
+                    <Button.Style>
+                      <Style BasedOn="{StaticResource MoreActionButtonViews}" TargetType="{x:Type Button}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+
+                        <Style.Triggers>
+                          <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                              <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
+                              <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=IsGameRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=GameClosing}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible" />
+                          </MultiDataTrigger>
+
+                          <DataTrigger Binding="{Binding ElementName=PlayState_GameStateSwitchControl, Path=Content.ResumeIconVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                          </DataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Button.Style>
+
+                    <Button.Content>
+                      <Viewbox Width="16" Height="16">
+                        <Path
+                          Data="M2,3h20v13H2V3zm2,2v9h16V5H4zm4,13h8v2H8v-2z M10,7l5,3.5-5,3.5V7z"
+                          Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground}"
+                          Stretch="Uniform" />
+                      </Viewbox>
+                    </Button.Content>
+                  </Button>
+
                   <Button
                     x:Name="PART_ButtonEditGame"
-                    Grid.Column="4"
+                    Grid.Column="6"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -358,7 +418,7 @@
 
                   <ToggleButton
                     Name="GameFavoriteToggleButton"
-                    Grid.Column="5"
+                    Grid.Column="7"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -374,20 +434,6 @@
                     Style="{DynamicResource PanelFavoriteToggleButton}"
                     Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}" />
 
-                  <ContentControl
-                    x:Name="PlayState_GameStateSwitchControl"
-                    Grid.Column="7"
-                    Width="32"
-                    Height="32"
-                    MinWidth="32"
-                    MinHeight="32"
-                    Margin="10,0,0,0"
-                    Padding="0"
-                    VerticalAlignment="Center"
-                    Visibility="{PluginSettings Plugin=PlayState,
-                                                Path=IsControlVisible,
-                                                FallbackValue=Collapsed,
-                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
 
                 <ScrollViewer
