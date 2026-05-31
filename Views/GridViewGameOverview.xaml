@@ -207,27 +207,41 @@
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource PlayButtonViews}" />
 
-                  <Button
-                    Name="PART_ButtonContextAction"
-                    Grid.Column="1"
-                    Margin="0,0,3,0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch">
-                    <Button.Style>
-                      <Style BasedOn="{StaticResource ContextButtonViews}" TargetType="Button">
+                  <!--  Wrapped in grid to ensure code-behind visibility changes are still hidden  -->
+                  <Grid Grid.Column="1">
+                    <Grid.Style>
+                      <Style TargetType="Grid">
                         <Style.Triggers>
+
                           <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                               <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
-                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=IsGameRunning}" Value="True" />
                               <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=IsGameRunning}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Collapsed" />
                           </MultiDataTrigger>
+
+                          <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                              <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
+                              <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=GameClosing}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                          </MultiDataTrigger>
+
                         </Style.Triggers>
                       </Style>
-                    </Button.Style>
-                  </Button>
+                    </Grid.Style>
+
+                    <Button
+                      Name="PART_ButtonContextAction"
+                      Margin="0,0,3,0"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Style="{StaticResource ContextButtonViews}" />
+                  </Grid>
 
                   <Button
                     Grid.Column="1"
@@ -240,13 +254,37 @@
                     <Button.Style>
                       <Style BasedOn="{StaticResource ContextButtonViews}" TargetType="Button">
                         <Setter Property="Visibility" Value="Collapsed" />
-
                         <Style.Triggers>
                           <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                               <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
-                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=IsGameRunning}" Value="True" />
                               <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=IsGameRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=GameClosing}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible" />
+                          </MultiDataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Button.Style>
+                  </Button>
+
+                  <Button
+                    Grid.Column="1"
+                    Margin="0,0,3,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Content="STOPPING"
+                    IsEnabled="False">
+                    <Button.Style>
+                      <Style BasedOn="{StaticResource ContextButtonViews}" TargetType="Button">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                          <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                              <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
+                              <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=GameClosing}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
                           </MultiDataTrigger>
@@ -269,6 +307,14 @@
                           <DataTrigger Binding="{Binding Visibility, ElementName=PART_ButtonContextAction}" Value="Visible">
                             <Setter Property="Tag" Value="BlueGradient" />
                           </DataTrigger>
+                          <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                              <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
+                              <Condition Binding="{Binding Game.IsRunning}" Value="True" />
+                              <Condition Binding="{PluginSettings Plugin=NowPlaying, Path=GameClosing}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="False" />
+                          </MultiDataTrigger>
                         </Style.Triggers>
                       </Style>
                     </Button.Style>

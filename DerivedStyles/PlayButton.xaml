@@ -334,11 +334,20 @@
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="STOP">
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DisplayText" Property="Text" Value="STOP" />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="STOPPING">
+              <Setter TargetName="DisplayText" Property="Text" Value="STOPPING" />
             </DataTrigger>
 
             <Trigger Property="IsEnabled" Value="False">
-              <Setter TargetName="Grid" Property="Opacity" Value="0.5" />
+              <Setter TargetName="DefaultBorder" Property="Background" Value="#2E3136" />
+              <Setter TargetName="DisplayText" Property="Foreground" Value="#80FFFFFF" />
+              <Setter TargetName="Icon_INSTALL" Property="Opacity" Value="0.5" />
+              <Setter TargetName="Icon_CANCEL" Property="Opacity" Value="0.5" />
             </Trigger>
+
             <Trigger Property="IsMouseOver" Value="True">
               <Trigger.EnterActions>
                 <BeginStoryboard>
@@ -576,8 +585,8 @@
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-              <Setter TargetName="DefaultBorder" Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" />
-              <Setter TargetName="Grid" Property="Opacity" Value="0.5" />
+              <Setter TargetName="DefaultBorder" Property="Background" Value="#2E3136" />
+              <Setter Property="Foreground" Value="#80FFFFFF" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
