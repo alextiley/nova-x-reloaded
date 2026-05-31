@@ -354,10 +354,10 @@
                         <TextBlock>
                           <TextBlock.Style>
                             <Style TargetType="TextBlock">
-                              <Setter Property="Text" Value="Pause game" />
+                              <Setter Property="Text" Value="Suspend Game" />
                               <Style.Triggers>
                                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ToolTip}, Path=PlacementTarget.Content.ResumeIconVisibility}" Value="Visible">
-                                  <Setter Property="Text" Value="Resume game" />
+                                  <Setter Property="Text" Value="Resume Game" />
                                 </DataTrigger>
                               </Style.Triggers>
                             </Style>
@@ -379,7 +379,7 @@
                     Command="{PluginSettings Plugin=NowPlaying,
                                              Path=ReturnToGame}"
                     Focusable="False"
-                    ToolTip="Focus game window">
+                    ToolTip="Switch to Game Window">
 
                     <Button.Style>
                       <Style BasedOn="{StaticResource MoreActionButtonViews}" TargetType="{x:Type Button}">
@@ -424,7 +424,7 @@
                     Padding="0"
                     Focusable="False"
                     Style="{DynamicResource MoreActionButtonViews}"
-                    ToolTip="Edit game settings">
+                    ToolTip="Edit Game Details">
                     <Button.Content>
                       <Viewbox Width="16" Height="16">
                         <Path
@@ -457,10 +457,10 @@
                         <TextBlock>
                           <TextBlock.Style>
                             <Style TargetType="TextBlock">
-                              <Setter Property="Text" Value="Add to favourites" />
+                              <Setter Property="Text" Value="Add to Favorites" />
                               <Style.Triggers>
                                 <DataTrigger Binding="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite}" Value="True">
-                                  <Setter Property="Text" Value="Remove from favourites" />
+                                  <Setter Property="Text" Value="Is in Favorites" />
                                 </DataTrigger>
                               </Style.Triggers>
                             </Style>
