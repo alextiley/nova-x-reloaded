@@ -234,7 +234,7 @@
                         </Style.Triggers>
                       </Style>
                     </Grid.Style>
-
+                    <!--  Playnite managed LAUNCHING / RUNNING / UNINSTALLING button  -->
                     <Button
                       Name="PART_ButtonContextAction"
                       Margin="0,0,3,0"
@@ -306,6 +306,9 @@
                         <Style.Triggers>
                           <DataTrigger Binding="{Binding Visibility, ElementName=PART_ButtonContextAction}" Value="Visible">
                             <Setter Property="Tag" Value="BlueGradient" />
+                          </DataTrigger>
+                          <DataTrigger Binding="{Binding IsEnabled, ElementName=PART_ButtonContextAction}" Value="False">
+                            <Setter Property="IsEnabled" Value="False" />
                           </DataTrigger>
                           <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>

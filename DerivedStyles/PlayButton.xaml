@@ -213,6 +213,13 @@
       </LinearGradientBrush>
     </Style.Resources>
 
+    <Style.Triggers>
+      <DataTrigger Binding="{Binding Content, Converter={StaticResource StringToUpperCaseConverter}, RelativeSource={RelativeSource Self}}" Value="LAUNCHING">
+        <Setter Property="Command" Value="{x:Null}" />
+        <Setter Property="IsEnabled" Value="False" />
+      </DataTrigger>
+    </Style.Triggers>
+
     <Setter Property="Background" Value="{StaticResource SteamInstallDefault}" />
     <Setter Property="Foreground" Value="White" />
     <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}" />
@@ -323,7 +330,7 @@
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="LAUNCHING">
-              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
+              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="DisplayText" Property="Text" Value="LAUNCHING" />
             </DataTrigger>
 
@@ -344,8 +351,6 @@
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="DefaultBorder" Property="Background" Value="#2E3136" />
               <Setter TargetName="DisplayText" Property="Foreground" Value="#80FFFFFF" />
-              <Setter TargetName="Icon_INSTALL" Property="Opacity" Value="0.5" />
-              <Setter TargetName="Icon_CANCEL" Property="Opacity" Value="0.5" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="True">
