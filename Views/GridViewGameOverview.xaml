@@ -348,7 +348,24 @@
                     Visibility="{PluginSettings Plugin=PlayState,
                                                 Path=IsControlVisible,
                                                 FallbackValue=Collapsed,
-                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <ContentControl.ToolTip>
+                      <ToolTip>
+                        <TextBlock>
+                          <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                              <Setter Property="Text" Value="Pause game" />
+                              <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ToolTip}, Path=PlacementTarget.Content.ResumeIconVisibility}" Value="Visible">
+                                  <Setter Property="Text" Value="Resume game" />
+                                </DataTrigger>
+                              </Style.Triggers>
+                            </Style>
+                          </TextBlock.Style>
+                        </TextBlock>
+                      </ToolTip>
+                    </ContentControl.ToolTip>
+                  </ContentControl>
 
                   <Button
                     x:Name="ButtonFocusGame"
@@ -361,7 +378,8 @@
                     Padding="0"
                     Command="{PluginSettings Plugin=NowPlaying,
                                              Path=ReturnToGame}"
-                    Focusable="False">
+                    Focusable="False"
+                    ToolTip="Focus game window">
 
                     <Button.Style>
                       <Style BasedOn="{StaticResource MoreActionButtonViews}" TargetType="{x:Type Button}">
@@ -405,7 +423,8 @@
                     Margin="10,0,0,0"
                     Padding="0"
                     Focusable="False"
-                    Style="{DynamicResource MoreActionButtonViews}">
+                    Style="{DynamicResource MoreActionButtonViews}"
+                    ToolTip="Edit game settings">
                     <Button.Content>
                       <Viewbox Width="16" Height="16">
                         <Path
@@ -432,7 +451,24 @@
                                                Mode=TwoWay,
                                                FallbackValue={StaticResource False}}"
                     Style="{DynamicResource PanelFavoriteToggleButton}"
-                    Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}" />
+                    Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}">
+                    <ToggleButton.ToolTip>
+                      <ToolTip>
+                        <TextBlock>
+                          <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                              <Setter Property="Text" Value="Add to favourites" />
+                              <Style.Triggers>
+                                <DataTrigger Binding="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite}" Value="True">
+                                  <Setter Property="Text" Value="Remove from favourites" />
+                                </DataTrigger>
+                              </Style.Triggers>
+                            </Style>
+                          </TextBlock.Style>
+                        </TextBlock>
+                      </ToolTip>
+                    </ToggleButton.ToolTip>
+                  </ToggleButton>
 
                 </Grid>
 
