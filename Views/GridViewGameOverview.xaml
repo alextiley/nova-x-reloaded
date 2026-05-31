@@ -337,6 +337,11 @@
 
                   <ContentControl
                     x:Name="PlayState_GameStateSwitchControl"
+                    Width="0"
+                    Height="0"
+                    Visibility="Hidden" />
+
+                  <Button
                     Grid.Column="4"
                     Width="32"
                     Height="32"
@@ -345,18 +350,23 @@
                     Margin="10,0,0,0"
                     Padding="0"
                     VerticalAlignment="Center"
+                    Command="{Binding ElementName=PlayState_GameStateSwitchControl, Path=Content.DataContext.SwitchCurrentGameStatusCommand}"
+                    Focusable="False"
+                    Style="{DynamicResource MoreActionButtonViews}"
+                    Tag="{Binding ElementName=PlayState_GameStateSwitchControl, Path=Content.ResumeIconVisibility}"
                     Visibility="{PluginSettings Plugin=PlayState,
                                                 Path=IsControlVisible,
                                                 FallbackValue=Collapsed,
                                                 Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <ContentControl.ToolTip>
+
+                    <Button.ToolTip>
                       <ToolTip>
                         <TextBlock>
                           <TextBlock.Style>
                             <Style TargetType="TextBlock">
                               <Setter Property="Text" Value="Suspend Game" />
                               <Style.Triggers>
-                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ToolTip}, Path=PlacementTarget.Content.ResumeIconVisibility}" Value="Visible">
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ToolTip}, Path=PlacementTarget.Tag}" Value="Visible">
                                   <Setter Property="Text" Value="Resume Game" />
                                 </DataTrigger>
                               </Style.Triggers>
@@ -364,8 +374,31 @@
                           </TextBlock.Style>
                         </TextBlock>
                       </ToolTip>
-                    </ContentControl.ToolTip>
-                  </ContentControl>
+                    </Button.ToolTip>
+
+                    <Button.Content>
+                      <Grid>
+                        <Viewbox
+                          Width="12"
+                          Height="12"
+                          Visibility="{Binding ElementName=PlayState_GameStateSwitchControl, Path=Content.PauseIconVisibility, FallbackValue=Collapsed}">
+                          <Path
+                            Data="M14,19H18V5H14M6,19H10V5H6V19Z"
+                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                            Stretch="Uniform" />
+                        </Viewbox>
+                        <Viewbox
+                          Width="12"
+                          Height="12"
+                          Visibility="{Binding ElementName=PlayState_GameStateSwitchControl, Path=Content.ResumeIconVisibility, FallbackValue=Collapsed}">
+                          <Path
+                            Data="M8,5.14V19.14L19,12.14L8,5.14Z"
+                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                            Stretch="Uniform" />
+                        </Viewbox>
+                      </Grid>
+                    </Button.Content>
+                  </Button>
 
                   <Button
                     x:Name="ButtonFocusGame"
