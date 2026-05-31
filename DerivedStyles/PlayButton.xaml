@@ -256,9 +256,11 @@
               Orientation="Horizontal">
 
               <Grid
+                x:Name="IconContainer"
                 Width="20"
                 Height="20"
-                Margin="0,0,10,0">
+                Margin="0,0,10,0"
+                Visibility="Collapsed">
 
                 <Path
                   x:Name="Icon_INSTALL"
@@ -315,31 +317,35 @@
 
           <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="INSTALL">
+              <Setter TargetName="IconContainer" Property="Visibility" Value="Visible" />
               <Setter TargetName="Icon_INSTALL" Property="Visibility" Value="Visible" />
               <Setter TargetName="DisplayText" Property="Text" Value="INSTALL" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="INSTALLING">
+              <Setter TargetName="IconContainer" Property="Visibility" Value="Visible" />
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
               <Setter TargetName="DisplayText" Property="Text" Value="INSTALLING" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="UNINSTALLING">
+              <Setter TargetName="IconContainer" Property="Visibility" Value="Visible" />
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
               <Setter TargetName="DisplayText" Property="Text" Value="REMOVING" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="LAUNCHING">
-              <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="DisplayText" Property="Text" Value="LAUNCHING" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="RUNNING">
+              <Setter TargetName="IconContainer" Property="Visibility" Value="Visible" />
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
               <Setter TargetName="DisplayText" Property="Text" Value="RUNNING" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding ElementName=OriginalText, Path=Text}" Value="STOP">
+              <Setter TargetName="IconContainer" Property="Visibility" Value="Visible" />
               <Setter TargetName="Icon_CANCEL" Property="Visibility" Value="Visible" />
               <Setter TargetName="DisplayText" Property="Text" Value="STOP" />
             </DataTrigger>
