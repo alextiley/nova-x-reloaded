@@ -495,6 +495,48 @@
                     </Button.Content>
                   </Button>
 
+                  <!--  Game description toggle button  -->
+                  <ToggleButton
+                    Name="GameInfoToggleButton"
+                    Grid.Column="7"
+                    Width="32"
+                    Height="32"
+                    MinWidth="32"
+                    MinHeight="32"
+                    Margin="10,0,0,0"
+                    Padding="0"
+                    VerticalAlignment="Stretch"
+                    Content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    Focusable="False"
+                    IsChecked="{Binding ResetOnGameChange, Mode=OneWay, FallbackValue=False}">
+                    <ToggleButton.Style>
+                      <Style BasedOn="{StaticResource SVGToggleButton}" TargetType="ToggleButton">
+                        <Setter Property="Visibility" Value="Visible" />
+                        <Style.Triggers>
+                          <DataTrigger Binding="{Binding Visibility, ElementName=PART_HtmlDescription}" Value="Collapsed">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                          </DataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </ToggleButton.Style>
+                    <ToggleButton.ToolTip>
+                      <ToolTip>
+                        <TextBlock>
+                          <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                              <Setter Property="Text" Value="Show Game Details" />
+                              <Style.Triggers>
+                                <DataTrigger Binding="{Binding PlacementTarget.IsChecked, RelativeSource={RelativeSource AncestorType=ToolTip}}" Value="True">
+                                  <Setter Property="Text" Value="Hide Game Details" />
+                                </DataTrigger>
+                              </Style.Triggers>
+                            </Style>
+                          </TextBlock.Style>
+                        </TextBlock>
+                      </ToolTip>
+                    </ToggleButton.ToolTip>
+                  </ToggleButton>
+
                   <!--  Favorites toggle button  -->
                   <ToggleButton
                     Name="GameFavoriteToggleButton"
@@ -532,6 +574,36 @@
                     </ToggleButton.ToolTip>
                   </ToggleButton>
                 </Grid>
+
+                <!--  HTML Description: only visible when toggled open  -->
+                <ContentControl>
+                  <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=GameInfoToggleButton}" Value="True">
+                          <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </ContentControl.Style>
+                  <ScrollViewer
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    DockPanel.Dock="Top"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto">
+                    <HtmlTextView
+                      Name="PART_HtmlDescription"
+                      HtmlFontFamily="{DynamicResource FontFamily}"
+                      HtmlFontSize="{DynamicResource FontSize}"
+                      HtmlForeground="{DynamicResource TextColor}"
+                      LinkForeground="{DynamicResource PropertyItemButtonTextColor}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      TemplatePath="{ThemeFile 'DescriptionView.html'}" />
+                  </ScrollViewer>
+                </ContentControl>
 
                 <ScrollViewer
                   x:Name="PART_ScrollViewHost"
@@ -1109,34 +1181,6 @@
                         </StackPanel>
                       </Expander>
                     </Border>
-
-                    <!--  Description  -->
-                    <Expander
-                      Name="PART_ElemDescription"
-                      Grid.Row="{DynamicResource GridViewSectionOrderDescription}"
-                      Margin="0,0,5,0"
-                      IsExpanded="True">
-                      <Expander.Header>
-                        <TextBlock
-                          Cursor="Hand"
-                          FontSize="{DynamicResource FontSizeLarge}"
-                          FontWeight="SemiBold"
-                          Style="{DynamicResource BaseTextBlockStyle}"
-                          Text="{DynamicResource LOCGameDescriptionTitle}" />
-                      </Expander.Header>
-                      <StackPanel Margin="0,0,0,0">
-                        <Separator Margin="0,5,0,10" Background="{DynamicResource GridViewSeparatorBrush}" />
-                        <HtmlTextView
-                          Name="PART_HtmlDescription"
-                          HtmlFontFamily="{DynamicResource FontFamily}"
-                          HtmlFontSize="{DynamicResource FontSize}"
-                          HtmlForeground="{DynamicResource TextColor}"
-                          LinkForeground="{DynamicResource PropertyItemButtonTextColor}"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          TemplatePath="{ThemeFile 'DescriptionView.html'}" />
-                      </StackPanel>
-                    </Expander>
 
                     <!--  Achievement bar  -->
                     <Expander
