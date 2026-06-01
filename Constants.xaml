@@ -26,8 +26,7 @@
   <sys:Int32 x:Key="GridViewSectionOrderVideo">1</sys:Int32>
   <sys:Int32 x:Key="GridViewSectionOrderNotes">2</sys:Int32>
   <sys:Int32 x:Key="GridViewSectionOrderDescription">3</sys:Int32>
-  <sys:Int32 x:Key="GridViewSectionOrderVndb">4</sys:Int32>
-  <sys:Int32 x:Key="GridViewSectionOrderPlayniteAchievements">5</sys:Int32>
+  <sys:Int32 x:Key="GridViewSectionOrderPlayniteAchievementSummary">5</sys:Int32>
   <sys:Int32 x:Key="GridViewSectionOrderHowLongToBeat">6</sys:Int32>
   <sys:Int32 x:Key="GridViewSectionOrderScreenshotsVisualizer">7</sys:Int32>
   <sys:Int32 x:Key="GridViewSectionOrderGameActivity">8</sys:Int32>
@@ -36,8 +35,7 @@
   <sys:Int32 x:Key="GridViewSectionOrderCheckDlc">11</sys:Int32>
   <sys:Int32 x:Key="GridViewSectionOrderGameRelations">12</sys:Int32>
   <sys:Int32 x:Key="GridViewSectionOrderSteamScreenshots">13</sys:Int32>
-  <sys:Int32 x:Key="GridViewSectionOrderWeb">14</sys:Int32>
-  <sys:Double x:Key="WebExplorerControlHeight">800</sys:Double>
+  <sys:Int32 x:Key="GridViewSectionOrderPlayniteAchievementDetails">15</sys:Int32>
   <sys:Boolean x:Key="GridViewCoverZoomOnHover">False</sys:Boolean>
   <sys:Boolean x:Key="GridViewShowZoomControls">False</sys:Boolean>
   <sys:Boolean x:Key="DetailsViewBlurGameBackgroundImage">False</sys:Boolean>
@@ -299,6 +297,7 @@
 
   <SolidColorBrush x:Key="GridViewCoverSubtitleBrush" Color="#b7b7b7" />
   <SolidColorBrush x:Key="GridViewSeparatorBrush" Color="#4Dc2c2c2" />
+  <SolidColorBrush x:Key="GridViewSeparatorBrushDarker" Color="#22c2c2c2" />
 
   <SolidColorBrush x:Key="DetailsViewInstalledTextForegroundBrush" Color="#e6e6e6" />
 

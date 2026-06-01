@@ -15,12 +15,14 @@
             d:DataContext="{x:Static DesignMainViewModel.DesignSelectedGameDetailsIntance}"
             BorderBrush="{DynamicResource PanelSeparatorBrush}">
             <DockPanel Margin="{DynamicResource PanelTopPanelSeparator}">
+              <!--  DuplicateHider: source selector and close icon  -->
               <Grid Margin="0,0,15,5" DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*" />
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
+                <!--  DuplicateHider: source selector  -->
                 <ContentControl
                   x:Name="DuplicateHider_SourceSelector"
                   Grid.Column="0"
@@ -34,6 +36,7 @@
                                               FallbackValue=Collapsed,
                                               Converter={StaticResource BooleanToVisibilityConverter}}" />
 
+                <!--  Close panel button  -->
                 <Button
                   Grid.Column="1"
                   HorizontalAlignment="Right"
@@ -43,6 +46,8 @@
                   FontFamily="Segoe MDL2 Assets"
                   Style="{DynamicResource SimpleButton}" />
               </Grid>
+
+              <!--  No game selected text  -->
               <TextBlock
                 Margin="0,20,0,0"
                 HorizontalAlignment="Center"
@@ -61,7 +66,9 @@
                 </TextBlock.Style>
               </TextBlock>
 
+              <!--  Selected game details  -->
               <DockPanel DockPanel.Dock="Top">
+                <!--  Hide panel if no data  -->
                 <DockPanel.Style>
                   <Style TargetType="DockPanel">
                     <Style.Triggers>
@@ -72,7 +79,7 @@
                   </Style>
                 </DockPanel.Style>
 
-
+                <!--  ExtraMetadata: Logo  -->
                 <Grid
                   x:Name="ExtraMetadataLoader_LogoLoaderControlGrid"
                   DockPanel.Dock="Top"
@@ -101,7 +108,10 @@
                     <ContentControl x:Name="ExtraMetadataLoader_LogoLoaderControl" VerticalAlignment="Center" />
                   </Border>
                 </Grid>
+
+                <!--  Game icon, title and NewsViewer: PlayersInGame  -->
                 <DockPanel DockPanel.Dock="Top">
+                  <!--  Game icon  -->
                   <Image
                     Name="PART_ImageIcon"
                     MaxWidth="32"
@@ -116,6 +126,8 @@
                         Rect="0,0,32,32" />
                     </Image.Clip>
                   </Image>
+
+                  <!--  NewsViewer: Players in game  -->
                   <ContentControl
                     x:Name="NewsViewer_PlayersInGameViewerControl"
                     VerticalAlignment="Center"
@@ -129,6 +141,7 @@
                     </ContentControl.Resources>
                   </ContentControl>
 
+                  <!--  Game title  -->
                   <Border
                     Margin="0,0,10,0"
                     DockPanel.Dock="Left"
@@ -159,9 +172,9 @@
                       Foreground="White"
                       TextWrapping="Wrap" />
                   </Border>
-
                 </DockPanel>
 
+                <!--  GogSecondClassWatcher  -->
                 <DockPanel
                   Margin="0,5,0,0"
                   DockPanel.Dock="Top"
@@ -178,8 +191,7 @@
                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </DockPanel>
 
-
-
+                <!--  Action buttons and controls  -->
                 <Grid
                   Margin="0,0,30,10"
                   HorizontalAlignment="Stretch"
@@ -187,18 +199,29 @@
                   DockPanel.Dock="Top">
 
                   <Grid.ColumnDefinitions>
+                    <!--  Green button (Play)  -->
                     <ColumnDefinition Width="Auto" />
+                    <!--  Blue button (Launching/Running/Installing/Install/NowPlaying: Closing/Close)  -->
                     <ColumnDefinition Width="Auto" />
+                    <!--  Context menu button  -->
                     <ColumnDefinition Width="Auto" />
 
+                    <!--  Spacer  -->
                     <ColumnDefinition Width="*" />
 
+                    <!--  PlayState: Suspend/Resume button  -->
                     <ColumnDefinition Width="Auto" />
+                    <!--  NowPlaying: Switch to Game Window button  -->
                     <ColumnDefinition Width="Auto" />
+                    <!--  Edit game details button  -->
                     <ColumnDefinition Width="Auto" />
+                    <!--  Game info toggle button  -->
+                    <ColumnDefinition Width="Auto" />
+                    <!--  Favorites toggle button  -->
                     <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
 
+                  <!--  Green button (Play)  -->
                   <Button
                     Name="PART_ButtonPlayAction"
                     Grid.Column="0"
@@ -207,12 +230,12 @@
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource PlayButtonViews}" />
 
+                  <!--  Blue button (Launching/Running/Installing/Install)  -->
                   <!--  Wrapped in grid to ensure code-behind visibility changes are still hidden  -->
                   <Grid Grid.Column="1">
                     <Grid.Style>
                       <Style TargetType="Grid">
                         <Style.Triggers>
-
                           <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                               <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
@@ -221,7 +244,6 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Collapsed" />
                           </MultiDataTrigger>
-
                           <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                               <Condition Binding="{PluginStatus Plugin=NowPlaying_db4e7ade-57fb-426c-8392-60e2347a0209, Status=Installed}" Value="True" />
@@ -230,11 +252,9 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Collapsed" />
                           </MultiDataTrigger>
-
                         </Style.Triggers>
                       </Style>
                     </Grid.Style>
-                    <!--  Playnite managed LAUNCHING / RUNNING / UNINSTALLING button  -->
                     <Button
                       Name="PART_ButtonContextAction"
                       Margin="0,0,3,0"
@@ -243,6 +263,7 @@
                       Style="{StaticResource ContextButtonViews}" />
                   </Grid>
 
+                  <!--  NowPlaying: Close game  -->
                   <Button
                     Grid.Column="1"
                     Margin="0,0,3,0"
@@ -269,6 +290,7 @@
                     </Button.Style>
                   </Button>
 
+                  <!--  NowPlaying: Closing game  -->
                   <Button
                     Grid.Column="1"
                     Margin="0,0,3,0"
@@ -293,6 +315,7 @@
                     </Button.Style>
                   </Button>
 
+                  <!--  Context menu button  -->
                   <Button
                     Name="PART_ButtonMoreActions"
                     Grid.Column="2"
@@ -338,12 +361,12 @@
                     </Button.Content>
                   </Button>
 
+                  <!--  PlayState: Suspend/Resume (custom button)  -->
                   <ContentControl
                     x:Name="PlayState_GameStateSwitchControl"
                     Width="0"
                     Height="0"
                     Visibility="Hidden" />
-
                   <Button
                     Grid.Column="4"
                     Width="32"
@@ -361,7 +384,6 @@
                                                 Path=IsControlVisible,
                                                 FallbackValue=Collapsed,
                                                 Converter={StaticResource BooleanToVisibilityConverter}}">
-
                     <Button.ToolTip>
                       <ToolTip>
                         <TextBlock>
@@ -403,6 +425,7 @@
                     </Button.Content>
                   </Button>
 
+                  <!--  NowPlaying: Switch to Game Window  -->
                   <Button
                     x:Name="ButtonFocusGame"
                     Grid.Column="5"
@@ -449,6 +472,7 @@
                     </Button.Content>
                   </Button>
 
+                  <!--  Edit game details button  -->
                   <Button
                     x:Name="PART_ButtonEditGame"
                     Grid.Column="6"
@@ -471,9 +495,10 @@
                     </Button.Content>
                   </Button>
 
+                  <!--  Favorites toggle button  -->
                   <ToggleButton
                     Name="GameFavoriteToggleButton"
-                    Grid.Column="7"
+                    Grid.Column="8"
                     Width="32"
                     Height="32"
                     MinWidth="32"
@@ -496,7 +521,7 @@
                             <Style TargetType="TextBlock">
                               <Setter Property="Text" Value="Add to Favorites" />
                               <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True">
+                                <DataTrigger Binding="{Binding PlacementTarget.IsChecked, RelativeSource={RelativeSource AncestorType=ToolTip}}" Value="True">
                                   <Setter Property="Text" Value="Is in Favorites" />
                                 </DataTrigger>
                               </Style.Triggers>
@@ -506,7 +531,6 @@
                       </ToolTip>
                     </ToggleButton.ToolTip>
                   </ToggleButton>
-
                 </Grid>
 
                 <ScrollViewer
@@ -538,6 +562,8 @@
                       <RowDefinition Height="Auto" />
                       <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+
+                    <!--  Details  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderDetails}"
                       Margin="0,0,5,0"
@@ -979,7 +1005,7 @@
                       </StackPanel>
                     </Expander>
 
-                    <!--#region ExtraMetadataLoader Video Control-->
+                    <!--  ExtraMetadata: Video Control  -->
                     <TextBlock x:Name="VideoFeedVisibilityProxy" Grid.Row="{DynamicResource GridViewSectionOrderVideo}">
                       <TextBlock.Style>
                         <Style TargetType="TextBlock">
@@ -1036,8 +1062,8 @@
                         </Grid>
                       </StackPanel>
                     </Expander>
-                    <!--#endregion-->
 
+                    <!--  Notes  -->
                     <Border Grid.Row="{DynamicResource GridViewSectionOrderNotes}">
                       <Border.Style>
                         <Style TargetType="Border">
@@ -1084,7 +1110,7 @@
                       </Expander>
                     </Border>
 
-
+                    <!--  Description  -->
                     <Expander
                       Name="PART_ElemDescription"
                       Grid.Row="{DynamicResource GridViewSectionOrderDescription}"
@@ -1112,31 +1138,9 @@
                       </StackPanel>
                     </Expander>
 
+                    <!--  Achievement bar  -->
                     <Expander
-                      Grid.Row="{DynamicResource GridViewSectionOrderVndb}"
-                      Margin="0,0,5,0"
-                      IsExpanded="True"
-                      Visibility="{PluginSettings Plugin=VNDBNexus,
-                                                  Path=IsControlVisible,
-                                                  FallbackValue=Collapsed,
-                                                  Converter={StaticResource BooleanToVisibilityConverter}}">
-                      <Expander.Header>
-                        <TextBlock
-                          Cursor="Hand"
-                          FontSize="{DynamicResource FontSizeLarge}"
-                          FontWeight="SemiBold"
-                          Style="{DynamicResource BaseTextBlockStyle}"
-                          Text="VNDB" />
-                      </Expander.Header>
-                      <StackPanel Margin="0,0,0,25">
-                        <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
-                        <ContentControl x:Name="VNDBNexus_VndbVisualNovelViewControl" Margin="0,10,20,0" />
-                      </StackPanel>
-                    </Expander>
-
-                    <!--#region PlayniteAchievements-->
-                    <Expander
-                      Grid.Row="{DynamicResource GridViewSectionOrderPlayniteAchievements}"
+                      Grid.Row="{DynamicResource GridViewSectionOrderPlayniteAchievementSummary}"
                       Margin="0,0,5,0"
                       IsExpanded="True"
                       Visibility="{PluginSettings Plugin=PlayniteAchievements,
@@ -1456,17 +1460,43 @@
                               </TextBlock.Effect>
                             </TextBlock>
                           </Grid>
-                          <!-- <ContentControl x:Name="PlayniteAchievements_PluginProgressBar" Margin="5,5,20,0" VerticalAlignment="Center" Height="28" /> -->
                         </DockPanel>
-                        <!-- <ContentControl x:Name="PlayniteAchievements_PluginCompactUnlocked" Margin="0,10,20,0" />
-                                                <ContentControl x:Name="PlayniteAchievements_PluginCompactLocked" Margin="0,10,20,0" />
-                                                <ContentControl x:Name="PlayniteAchievements_PluginUserStats" Margin="0,10,20,0" />
-                                                <ContentControl x:Name="PlayniteAchievements_PluginChart" Margin="0,10,20,0" />-->
                       </StackPanel>
                     </Expander>
-                    <!--#endregion-->
 
-                    <!--#region HowLongToBeat-->
+                    <!--  Achievement details  -->
+                    <Expander
+                      Grid.Row="{DynamicResource GridViewSectionOrderPlayniteAchievementDetails}"
+                      Margin="0,0,5,0"
+                      IsExpanded="True"
+                      Visibility="{PluginSettings Plugin=PlayniteAchievements,
+                                                  Path=HasData,
+                                                  FallbackValue=Collapsed,
+                                                  Converter={StaticResource BooleanToVisibilityConverter}}">
+                      <Expander.Header>
+                        <TextBlock
+                          Cursor="Hand"
+                          FontSize="{DynamicResource FontSizeLarge}"
+                          FontWeight="SemiBold"
+                          Style="{DynamicResource BaseTextBlockStyle}"
+                          Text="Achievement Details" />
+                      </Expander.Header>
+                      <StackPanel Margin="0,0,0,15">
+                        <Separator Margin="0,5,0,15" Background="{DynamicResource GridViewSeparatorBrush}" />
+                        <ContentControl x:Name="PlayniteAchievements_PluginCompactUnlocked" />
+                        <Separator Margin="10,20,25,10" Background="{DynamicResource GridViewSeparatorBrushDarker}" />
+                        <TextBlock
+                          Margin="10,0,0,10"
+                          FontSize="{DynamicResource FontSizeMedium}"
+                          Foreground="{DynamicResource TextBrushDarker}"
+                          Text="Locked Achievements" />
+                        <ContentControl x:Name="PlayniteAchievements_PluginCompactLocked" />
+                        <!--  Cant get this to render anything!  -->
+                        <!-- <ContentControl x:Name="PlayniteAchievements_PluginUserStats" /> -->
+                      </StackPanel>
+                    </Expander>
+
+                    <!--  HowLongToBeat  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderHowLongToBeat}"
                       Margin="0,0,5,0"
@@ -1516,8 +1546,9 @@
                         </ContentControl>
                       </StackPanel>
                     </Expander>
-                    <!--#endregion-->
-                    <!--#region ScreenshotsVisualizer-->
+
+                    <!--  ScreenshotsVisualizer: Hack added to upscale image, set height to 590 in plugin settings  -->
+                    <!--  TODO: Divide height by 2 for Viewbox and subtract 47 from height for ContentControl height  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderScreenshotsVisualizer}"
                       Margin="0,0,5,0"
@@ -1566,17 +1597,9 @@
                           </Viewbox>
                         </Border>
                       </StackPanel>
-                      <!-- <ContentControl x:Name="ScreenshotsVisualizer_PluginListScreenshots" Margin="0,10,0,0" /> -->
-                      <!--  original implementation:  -->
-                      <!-- <StackPanel Margin="0,0,0,25">
-                                                <Separator Background="{DynamicResource GridViewSeparatorBrush}" Margin="0,5,0,5"/>
-                                                <ContentControl x:Name="ScreenshotsVisualizer_PluginSinglePicture" Margin="0,10,20,0" />
-                                                <ContentControl x:Name="ScreenshotsVisualizer_PluginListScreenshots" Margin="0,10,20,0" />
-                                            </StackPanel>-->
                     </Expander>
-                    <!--#endregion-->
 
-                    <!--#region GameActivity-->
+                    <!--  GameActivity  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderGameActivity}"
                       Margin="0,0,5,0"
@@ -1599,9 +1622,8 @@
                         <ContentControl x:Name="GameActivity_PluginChartTime" Margin="0,5,0,0" />
                       </StackPanel>
                     </Expander>
-                    <!--#endregion-->
 
-                    <!--#region ReviewViewer-->
+                    <!--  ReviewViewer  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderReviewViewer}"
                       Margin="0,0,5,0"
@@ -1623,9 +1645,8 @@
                         <ContentControl x:Name="ReviewViewer_ReviewsControl" Margin="0,5,10,5" />
                       </StackPanel>
                     </Expander>
-                    <!--#endregion-->
 
-                    <!--#region NewsViewer-->
+                    <!--  NewsViewer  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderNewsViewer}"
                       Margin="0,0,5,0"
@@ -1647,9 +1668,8 @@
                         <ContentControl x:Name="NewsViewer_NewsViewerControl" Margin="0,0,10,0" />
                       </StackPanel>
                     </Expander>
-                    <!--#endregion-->
 
-                    <!--#region CheckDlc-->
+                    <!--  CheckDlc  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderCheckDlc}"
                       Margin="0,0,5,0"
@@ -1700,6 +1720,7 @@
                       </StackPanel>
                     </Expander>
 
+                    <!--  GameRelations: Heavily modified  -->
                     <StackPanel
                       Grid.Row="{DynamicResource GridViewSectionOrderGameRelations}"
                       SnapsToDevicePixels="True"
@@ -1726,7 +1747,7 @@
                             </TextBlock.Text>
                           </TextBlock>
                         </Expander.Header>
-                        <StackPanel Margin="0,0,25,15">
+                        <StackPanel Margin="0,0,0,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SimilarGamesControl" Margin="0,5,0,0" />
                         </StackPanel>
@@ -1753,7 +1774,7 @@
                             </TextBlock.Text>
                           </TextBlock>
                         </Expander.Header>
-                        <StackPanel Margin="0,0,25,15">
+                        <StackPanel Margin="0,0,0,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SameSeriesControl" Margin="0,5,0,0" />
                         </StackPanel>
@@ -1780,7 +1801,7 @@
                             </TextBlock.Text>
                           </TextBlock>
                         </Expander.Header>
-                        <StackPanel Margin="0,0,25,15">
+                        <StackPanel Margin="0,0,0,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SameDeveloperControl" Margin="0,5,0,0" />
                         </StackPanel>
@@ -1807,14 +1828,14 @@
                             </TextBlock.Text>
                           </TextBlock>
                         </Expander.Header>
-                        <StackPanel Margin="0,0,25,15">
+                        <StackPanel Margin="0,0,0,15">
                           <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
                           <ContentControl x:Name="GameRelations_SamePublisherControl" Margin="0,5,0,0" />
                         </StackPanel>
                       </Expander>
                     </StackPanel>
-                    <!--#endregion-->
 
+                    <!--  Steam Screenshots  -->
                     <Expander
                       Grid.Row="{DynamicResource GridViewSectionOrderSteamScreenshots}"
                       Margin="0,0,5,0"
@@ -1837,28 +1858,6 @@
                           x:Name="SteamScreenshots_SteamScreenshotsViewControl"
                           Height="700"
                           Margin="0,0,0,10" />
-                      </StackPanel>
-                    </Expander>
-
-                    <Expander
-                      Grid.Row="{DynamicResource GridViewSectionOrderWeb}"
-                      Margin="0,0,5,0"
-                      IsExpanded="True"
-                      Visibility="{Binding ElementName=WebExplorer_BrowserHostViewControl, Path=Content.IsControlVisible, Converter={StaticResource BooleanToVisibilityConverter}, TargetNullValue=Collapsed, FallbackValue=Collapsed}">
-                      <Expander.Header>
-                        <TextBlock
-                          Cursor="Hand"
-                          FontSize="{DynamicResource FontSizeLarge}"
-                          FontWeight="SemiBold"
-                          Style="{DynamicResource BaseTextBlockStyle}"
-                          Text="{DynamicResource LOCWebExplorer_WebLabel}" />
-                      </Expander.Header>
-                      <StackPanel Margin="0,0,0,25">
-                        <Separator Margin="0,5,0,5" Background="{DynamicResource GridViewSeparatorBrush}" />
-                        <ContentControl
-                          x:Name="WebExplorer_BrowserHostViewControl"
-                          Height="{DynamicResource WebExplorerControlHeight}"
-                          Margin="0,5,0,5" />
                       </StackPanel>
                     </Expander>
                   </Grid>

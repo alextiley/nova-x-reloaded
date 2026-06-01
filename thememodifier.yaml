@@ -9,7 +9,6 @@
     - DetailsViewDetailsMaxWidth(1024,2400): 'Maximum width of details'
     - DetailsViewAllowUseOfLogos: 'Allow use of logos (Requires Extra Metadata Loader extension)'
     - DetailsViewLibraryGameShowFavorite: 'Show favorites icon in game list'
-    - WebExplorerControlHeight(400,1800): 'Web view component height (Requires Web Explorer extension)'
     - "Grid View Details"
     - GridViewPlaceDescriptionAtBottom: 'Place game description at the bottom'
     - GridViewDetailsIconsVisibility: 'Visibility of icons in details'
@@ -32,8 +31,8 @@
     - GridViewSectionOrderVideo(0,18): 'ExtraMetadata extension video'
     - GridViewSectionOrderNotes(0,18): 'Game Notes'
     - GridViewSectionOrderDescription(0,18): 'Game Description'
-    - GridViewSectionOrderVndb(0,18): 'VNDB Nexus extension'
-    - GridViewSectionOrderPlayniteAchievements(0,18): 'PlayniteAchievements extension'
+    - GridViewSectionOrderPlayniteAchievementSummary(0,18): 'PlayniteAchievements extension: Summary'
+    - GridViewSectionOrderPlayniteAchievementDetails(0,18): 'PlayniteAchievements extension: Details'
     - GridViewSectionOrderHowLongToBeat(0,18): 'HowLongToBeat extension'
     - GridViewSectionOrderScreenshotsVisualizer(0,18): 'ScreenshotsVisualizer extension'
     - GridViewSectionOrderGameActivity(0,18): 'GameActivity extension'
@@ -42,4 +41,3 @@
     - GridViewSectionOrderCheckDlc(0,18): 'CheckDlc extension'
     - GridViewSectionOrderGameRelations(0,18): 'Game Relations extension'
     - GridViewSectionOrderSteamScreenshots(0,18): 'Steam Screenshots extension'
-    - GridViewSectionOrderWeb(0,18): 'Web Explorer extension'
