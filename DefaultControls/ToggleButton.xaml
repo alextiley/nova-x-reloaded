@@ -49,7 +49,7 @@
     </Setter>
   </Style>
 
-  <Style x:Key="PanelFavoriteToggleButton" TargetType="{x:Type ToggleButton}">
+  <Style x:Key="SVGToggleButton" TargetType="{x:Type ToggleButton}">
     <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     <Setter Property="FontWeight" Value="Normal" />
@@ -58,7 +58,6 @@
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Padding" Value="10,5,10,5" />
     <Setter Property="Cursor" Value="Hand" />
-    <Setter Property="IsChecked" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -73,15 +72,15 @@
               Style="{DynamicResource HighlightBorder}">
 
               <Viewbox
-                x:Name="FavoriteIcon"
+                x:Name="IconViewbox"
                 Width="{DynamicResource FontSize}"
                 Height="{DynamicResource FontSize}"
                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                 <Path
-                  x:Name="FavoritePath"
-                  Data="m600 1086 449.68-447.79c120.42-119.95 120.42-314.34 0-434.26-120.37-119.95-315.61-119.95-436.03 0l-13.641 13.547-13.641-13.547c-120.42-119.95-315.66-119.95-436.03 0-120.42 119.91-120.42 314.29 0 434.26z"
+                  x:Name="ButtonPath"
+                  Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
                   Stretch="Uniform" />
               </Viewbox>
             </Border>
@@ -89,11 +88,10 @@
 
           <ControlTemplate.Triggers>
             <Trigger Property="IsChecked" Value="False">
-              <Setter TargetName="FavoritePath" Property="Fill" Value="#80FFFFFF" />
+              <Setter TargetName="ButtonPath" Property="Fill" Value="#80FFFFFF" />
             </Trigger>
-
             <Trigger Property="IsChecked" Value="True">
-              <Setter TargetName="FavoritePath" Property="Fill" Value="#67b3ff" />
+              <Setter TargetName="ButtonPath" Property="Fill" Value="#67b3ff" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
