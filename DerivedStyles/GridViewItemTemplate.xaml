@@ -79,9 +79,7 @@
                     SnapsToDevicePixels="True"
                     Stretch="{Settings CoverArtStretch}"
                     StretchDirection="Both" />
-
                 </StackPanel>
-
 
                 <Border
                   x:Name="TextGameName"
@@ -190,110 +188,68 @@
                       Style="{StaticResource SimpleButton}" />
                   </StackPanel>
                 </Viewbox>
-                <!--  Steam-style 100% achievement badge  -->
-                <ItemsControl Panel.ZIndex="99" ItemsSource="{Binding Game.Tags}">
-                  <!--  We use a Grid panel so that if a game has 10 tags, the 9 hidden ones take up exactly 0 pixels of space  -->
-                  <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                      <Grid />
-                    </ItemsPanelTemplate>
-                  </ItemsControl.ItemsPanel>
 
-                  <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                      <!--  1. Default to Collapsed here  -->
-                      <StackPanel
-                        x:Name="RootPanel"
-                        Margin="0,0,0,-22"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom"
-                        Orientation="Horizontal"
-                        Visibility="Collapsed">
+                <Grid
+                  x:Name="AchievementRibbon"
+                  Margin="0,0,0,-22"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Bottom"
+                  Panel.ZIndex="99"
+                  Visibility="Collapsed">
+                  <Grid VerticalAlignment="Center">
+                    <Border
+                      Margin="20,-10,0,0"
+                      VerticalAlignment="Center"
+                      Background="#1fadff"
+                      CornerRadius="0,4,4,0">
+                      <Grid>
+                        <TextBlock
+                          Padding="25,2,8,3"
+                          VerticalAlignment="Center"
+                          FontSize="{DynamicResource FontSizeSmall}"
+                          Foreground="#ffffff"
+                          Text="100% Complete"
+                          TextTrimming="CharacterEllipsis" />
+                        <Border
+                          x:Name="DarkBorder"
+                          Background="#80000000"
+                          CornerRadius="0,4,4,0"
+                          Visibility="Collapsed" />
+                      </Grid>
+                    </Border>
 
-                        <Grid VerticalAlignment="Center">
+                    <Image
+                      Width="44"
+                      Height="44"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      RenderOptions.BitmapScalingMode="Fant"
+                      Source="{ThemeFile 'Images/ribbon.png'}"
+                      Stretch="Uniform">
+                      <Image.Effect>
+                        <DropShadowEffect
+                          BlurRadius="6"
+                          Opacity="0.8"
+                          RenderingBias="Performance"
+                          ShadowDepth="2"
+                          Color="#000000" />
+                      </Image.Effect>
+                    </Image>
 
-                          <!--  YOUR BORDER  -->
-                          <Border
-                            Margin="20,-10,0,0"
-                            VerticalAlignment="Center"
-                            Background="#1fadff"
-                            CornerRadius="0,4,4,0">
-                            <!--  We wrap the text and the shadow together so they are the exact same size  -->
-                            <Grid>
-                              <TextBlock
-                                Padding="25,2,8,3"
-                                VerticalAlignment="Center"
-                                FontSize="{DynamicResource FontSizeSmall}"
-                                Foreground="#ffffff"
-                                Text="100% Complete"
-                                TextTrimming="CharacterEllipsis" />
-
-                              <!--  NEW: FIXED BORDER SHADOW (Now stretches perfectly over the blue box)  -->
-                              <Border
-                                x:Name="DarkBorder"
-                                Background="#80000000"
-                                CornerRadius="0,4,4,0"
-                                Visibility="Collapsed" />
-                            </Grid>
-                          </Border>
-
-                          <!--  YOUR IMAGE  -->
-                          <Image
-                            Width="44"
-                            Height="44"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Source="{ThemeFile 'Images/ribbon.png'}"
-                            Stretch="Uniform">
-                            <Image.Effect>
-                              <DropShadowEffect
-                                BlurRadius="6"
-                                Opacity="0.8"
-                                RenderingBias="Performance"
-                                ShadowDepth="2"
-                                Color="#000000" />
-                            </Image.Effect>
-                          </Image>
-
-                          <!--  NEW: IMAGE SHADOW  -->
-                          <Rectangle
-                            x:Name="DarkImage"
-                            Width="44"
-                            Height="44"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Fill="#40000000"
-                            Visibility="Collapsed">
-                            <Rectangle.OpacityMask>
-                              <ImageBrush ImageSource="{ThemeFile 'Images/ribbon.png'}" Stretch="Uniform" />
-                            </Rectangle.OpacityMask>
-                          </Rectangle>
-
-                        </Grid>
-                      </StackPanel>
-
-                      <!--  2. ALL LOGIC GOES HERE AT THE BOTTOM  -->
-                      <DataTemplate.Triggers>
-                        <!--  Make the whole ribbon visible if it has the tag  -->
-                        <DataTrigger Binding="{Binding Name}" Value="[PA] Completed">
-                          <Setter TargetName="RootPanel" Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-
-                        <!--  If uninstalled, make the two black shadow overlays visible  -->
-                        <MultiDataTrigger>
-                          <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Settings DarkenUninstalledGamesGrid}" Value="True" />
-                            <Condition Binding="{Binding DataContext.Game.IsInstalled, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Value="False" />
-                          </MultiDataTrigger.Conditions>
-                          <Setter TargetName="DarkBorder" Property="Visibility" Value="Visible" />
-                          <Setter TargetName="DarkImage" Property="Visibility" Value="Visible" />
-                        </MultiDataTrigger>
-                      </DataTemplate.Triggers>
-
-                    </DataTemplate>
-                  </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                    <Rectangle
+                      x:Name="DarkImage"
+                      Width="44"
+                      Height="44"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      Fill="#40000000"
+                      Visibility="Collapsed">
+                      <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="{ThemeFile 'Images/ribbon.png'}" Stretch="Uniform" />
+                      </Rectangle.OpacityMask>
+                    </Rectangle>
+                  </Grid>
+                </Grid>
               </Grid>
 
               <Border
@@ -418,6 +374,8 @@
                 <Condition Binding="{Settings DarkenUninstalledGamesGrid}" Value="True" />
               </MultiDataTrigger.Conditions>
               <Setter TargetName="BorderMouseOver" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DarkBorder" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DarkImage" Property="Visibility" Value="Visible" />
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -466,6 +424,10 @@
               <Setter TargetName="BorderDarkFade" Property="Visibility" Value="Visible" />
               <Setter TargetName="GameControls" Property="Visibility" Value="Visible" />
             </Trigger>
+
+            <DataTrigger Binding="{Binding CompletionStatus.Name}" Value="Completed">
+              <Setter TargetName="AchievementRibbon" Property="Visibility" Value="Visible" />
+            </DataTrigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
