@@ -150,13 +150,13 @@
   <Color x:Key="TitleWindowCloseHoverColor">#c42b1c</Color>
 
 
-  <Color x:Key="ControlsBackgroundColor">#303030</Color>
+  <Color x:Key="ControlsBackgroundColor">#2E3136</Color>
   <Color x:Key="ControlMouserOverBackgroundColor">#454545</Color>
 
-  <Color x:Key="TopPanelItemBackgroundColor">#303030</Color>
-  <Color x:Key="TopPanelItemHoverBackgroundColor">#303030</Color>
-  <Color x:Key="TopPanelSearchBoxBackgroundColor">#303030</Color>
-  <Color x:Key="TopPanelFilterToggleBackgroundColor">#303030</Color>
+  <Color x:Key="TopPanelItemBackgroundColor">#2E3136</Color>
+  <Color x:Key="TopPanelItemHoverBackgroundColor">#2E3136</Color>
+  <Color x:Key="TopPanelSearchBoxBackgroundColor">#2E3136</Color>
+  <Color x:Key="TopPanelFilterToggleBackgroundColor">#2E3136</Color>
 
   <SolidColorBrush x:Key="PropertyItemButtonTextBrush" Color="{DynamicResource PropertyItemButtonTextColor}" />
 
