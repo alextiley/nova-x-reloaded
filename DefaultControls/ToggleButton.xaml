@@ -88,10 +88,10 @@
 
           <ControlTemplate.Triggers>
             <Trigger Property="IsChecked" Value="False">
-              <Setter TargetName="ButtonPath" Property="Fill" Value="#80FFFFFF" />
+              <Setter TargetName="ButtonPath" Property="Fill" Value="{DynamicResource ToggleButtonNotCheckedBrush}" />
             </Trigger>
             <Trigger Property="IsChecked" Value="True">
-              <Setter TargetName="ButtonPath" Property="Fill" Value="#67b3ff" />
+              <Setter TargetName="ButtonPath" Property="Fill" Value="{DynamicResource ToggleButtonCheckedBrush}" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>

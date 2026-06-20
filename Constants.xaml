@@ -112,6 +112,7 @@
   <Color x:Key="DataChangeNotifColor">#ffa500</Color>
   <!--    -->
   <Color x:Key="HighlightGlyphColor">#48494b</Color>
+  <Color x:Key="HoverBrushColor">#48494b</Color>
   <Color x:Key="PopupForegroundColor">#dddddd</Color>
   <Color x:Key="PopupBackgroundColor">#1a1b1e</Color>
   <Color x:Key="PopupBorderColor">#63676869</Color>
@@ -130,9 +131,9 @@
   <Color x:Key="PurpleButtonBrushHighlightColor">#c077d6</Color>
   <Color x:Key="PurpleButtonBrushSelectedColor">#cc90dd</Color>
 
-  <Color x:Key="ToggleButtonNotCheckedColor">#2e2c2f</Color>
+  <Color x:Key="ToggleButtonCheckedColor">#67b3ff</Color>
+  <Color x:Key="ToggleButtonNotCheckedColor">#80FFFFFF</Color>
   <Color x:Key="ToggleButtonNotCheckedBorderColor">#6f6d70</Color>
-  <Color x:Key="ToggleButtonNotCheckedHighlightBorderColor">#acabad</Color>
 
   <Color x:Key="ThumbFillColor">#5D6f7275</Color>
   <Color x:Key="ThumbFillHoverColor">#5D8f9495</Color>
@@ -151,10 +152,10 @@
 
 
   <Color x:Key="ControlsBackgroundColor">#2E3136</Color>
-  <Color x:Key="ControlMouserOverBackgroundColor">#454545</Color>
+  <Color x:Key="ControlMouserOverBackgroundColor">#3a3d44</Color>
 
   <Color x:Key="TopPanelItemBackgroundColor">#2E3136</Color>
-  <Color x:Key="TopPanelItemHoverBackgroundColor">#2E3136</Color>
+  <Color x:Key="TopPanelItemHoverBackgroundColor">#3a3d44</Color>
   <Color x:Key="TopPanelSearchBoxBackgroundColor">#2E3136</Color>
   <Color x:Key="TopPanelFilterToggleBackgroundColor">#2E3136</Color>
 
@@ -178,9 +179,13 @@
   <SolidColorBrush x:Key="NormalBrush" Color="{DynamicResource HoverColor}" />
   <SolidColorBrush x:Key="NormalBrushDark" Color="{DynamicResource MainColorDark}" />
   <SolidColorBrush x:Key="NormalBorderBrush" Color="Transparent" />
-  <SolidColorBrush x:Key="HoverBrush" Color="{DynamicResource HighlightGlyphColor}" />
+  <SolidColorBrush x:Key="HoverBrush" Color="{DynamicResource HoverBrushColor}" />
   <SolidColorBrush x:Key="GlyphBrush" Color="{DynamicResource GlyphColor}" />
-  <SolidColorBrush x:Key="HighlightGlyphBrush" Color="{DynamicResource HighlightGlyphColor}" />
+  <LinearGradientBrush x:Key="HighlightGlyphBrush" StartPoint="0,0" EndPoint="1,1">
+    <GradientStop Offset="0.0" Color="#47bfff" />
+    <GradientStop Offset="0.6" Color="#1a44c2" />
+  </LinearGradientBrush>
+  <!-- <SolidColorBrush x:Key="HighlightGlyphBrush" Color="{DynamicResource HighlightGlyphColor}" /> -->
   <SolidColorBrush x:Key="PopupBorderBrush" Color="{DynamicResource PopupBorderColor}" />
   <SolidColorBrush x:Key="TooltipBackgroundBrush" Color="{DynamicResource PopupBackgroundColor}" />
   <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#2e2c2f" />
@@ -212,9 +217,9 @@
   <SolidColorBrush x:Key="PurpleButtonBrushHighlight" Color="{DynamicResource ControlsBackgroundColor}" />
   <SolidColorBrush x:Key="PurpleButtonBrushSelected" Color="{DynamicResource ControlMouserOverBackgroundColor}" />
 
+  <SolidColorBrush x:Key="ToggleButtonCheckedBrush" Color="{DynamicResource ToggleButtonCheckedColor}" />
   <SolidColorBrush x:Key="ToggleButtonNotCheckedBrush" Color="{DynamicResource ToggleButtonNotCheckedColor}" />
   <SolidColorBrush x:Key="ToggleButtonNotCheckedBorderBrush" Color="{DynamicResource ToggleButtonNotCheckedBorderColor}" />
-  <SolidColorBrush x:Key="ToggleButtonNotCheckedHighlightBorderBrush" Color="{DynamicResource ToggleButtonNotCheckedHighlightBorderColor}" />
 
   <SolidColorBrush x:Key="ThumbFillBrush" Color="{DynamicResource ThumbFillColor}" />
   <SolidColorBrush x:Key="ThumbFillBrushHover" Color="{DynamicResource ThumbFillHoverColor}" />
